@@ -1,7 +1,6 @@
 import React from 'react';
+import About from '../components/AboutModal';
 
-const about = () => {
-	return <div></div>;
-};
+const about = () => {};
 
 export default about;
