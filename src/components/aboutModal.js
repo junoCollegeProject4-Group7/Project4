@@ -1,7 +1,10 @@
-import React from 'react';
 
-const aboutModal = () => {
-	return <div></div>;
-};
+const AboutModal = () => {
+  return (
+    <div className="aboutContainer">
+      <button>start</button>
+    </div>
+  )
+}
 
-export default aboutModal;
+export default AboutModal
