@@ -1,7 +1,7 @@
 import React from 'react';
 
-const scoreboard = () => {
+const Scoreboard = () => {
 	return <div></div>;
 };
 
-export default scoreboard;
+export default Scoreboard;
