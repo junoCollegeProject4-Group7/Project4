@@ -1,7 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-const generator = () => {
-	return <div></div>;
-};
+const Generator = () => {
+  return (
+          <h2 className="createAvatar">Avatar</h2>
+  )
+}
 
-export default generator;
+export default Generator

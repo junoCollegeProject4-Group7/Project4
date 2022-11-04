@@ -1,6 +1,12 @@
-import React from 'react';
-import About from '../components/AboutModal';
+import AboutModal from '../components/AboutModal'
 
-const about = () => {};
+const About = () => {
+  return (
+    <>
+    <h1>About Page</h1>
+    <AboutModal />
+    </>
+  )
+}
 
-export default about;
+export default About
