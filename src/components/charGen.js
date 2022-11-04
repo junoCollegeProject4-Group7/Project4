@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { v4 } from 'uuid';
 import axios from 'axios';
+
 //api is url: `https://avatars.dicebear.com/api/adventurer-neutral/${id}.svg?scale=25`,
 const CharGen = () => {
 	const [avatar, setAvatar] = useState('');
