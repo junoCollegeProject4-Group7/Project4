@@ -1,13 +1,13 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import './App.scss';
 
-import Generator from './pages/Generator';
+// import Generator from './pages/Generator';
 import About from './pages/About';
 import { useState, useEffect } from 'react';
 // this is used to access and store data from/to firebase
 import { getDatabase, ref, onValue } from 'firebase/database';
 import firebaseConfig from './firebase';
-
+import Quiz from './components/QuizSelector';
 function App() {
 	const [players, setplayers] = useState([]);
 
@@ -23,6 +23,7 @@ function App() {
 	}, []);
 	return (
 		<div className='wrapper'>
+			<Quiz></Quiz>
 			{/* <header>
                 <Link to="/">
                     <h1>Trivia Time</h1>

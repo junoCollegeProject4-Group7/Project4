@@ -1,7 +1,7 @@
 import React from 'react';
 
-const scores = () => {
+const Scores = () => {
 	return <div></div>;
 };
 
-export default scores;
+export default Scores;
