@@ -9,7 +9,7 @@ const About = () => {
 					you want the quiz to be and how your avatar will <Look></Look>
 				</p>
 				<div className='startBtn'>
-					<Link to='/generator'>Click here to begin</Link>
+					<Link to='/Generator'>Click here to begin</Link>
 				</div>
 			</div>
 		</>
