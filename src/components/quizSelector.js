@@ -1,49 +1,41 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import QuestionCard from './QuestionCard';
 //api is https://opentdb.com/api_config.php
 
 //example api https://opentdb.com/api.php?amount=10&category=25&difficulty=medium&type=multiple
 const QuizSelector = () => {
-	const [category, setCategory] = useState('');
-	// const [difficulty, setDifficulty] = useState('');
+	const [category, setCategory] = useState(8);
+	const [difficulty, setDifficulty] = useState('');
 	const [questionBank, setQuestionBank] = useState([]);
 
-	const handleChange = (e) => {
-		e.preventDefault();
-		setCategory(e.target.value);
-	};
-
-	useEffect(() => {
+	const questions = async () => {
 		try {
-			if (category < 8) {
-				axios.get('https://opentdb.com/api.php?amount=10').then((res) => {
-					setQuestionBank(res.data.results);
-					console.log(questionBank);
-				});
-			} else {
-				axios
-					.get(`https://opentdb.com/api.php?amount=10&category=${category}`)
-					.then((res) => {
-						console.log(questionBank);
-						setQuestionBank(res.data.results);
-					});
+			if (difficulty && category) {
+				const res = await axios.get(
+					`https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`
+				);
+				setQuestionBank(res.data.results);
 			}
 		} catch (err) {
-			alert('error');
+			alert(err);
 		}
-	}, [setCategory]);
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		questions();
+	};
 
 	return (
 		<>
-			<form>
+			<form onSubmit={(e) => handleSubmit(e)}>
 				<label htmlFor='quizCategory'></label>
 				<select
 					onChange={(e) => {
-						handleChange(e);
+						setCategory(e.target.value);
 					}}
 				>
-					<option value={6}>Catergories</option>
-					<option value={7}>Any Catergory</option>
 					<option value={9}>General knowledge</option>
 					<option value={10}>Books</option>
 					<option value={11}>Film</option>
@@ -69,13 +61,23 @@ const QuizSelector = () => {
 					<option value={31}>Anime & Mangas</option>
 					<option value={32}>Cartoon & Animation</option>
 				</select>
-				{/* <select>
-					<option value={easy}>Easy</option>
-					<option value={medium}>Medium</option>
-					<option value={hard}>Hard</option>
-				</select> */}
+				<select
+					onChange={(e) => {
+						setDifficulty(e.target.value);
+					}}
+				>
+					<option value={''}>Pick your difficulty</option>
+					<option value={'easy'}>Easy</option>
+					<option value={'medium'}>Medium</option>
+					<option value={'hard'}>Hard</option>
+				</select>
 				<button className='submit'>Submit</button>
 			</form>
+			<section className='quiz wrapper'>
+				{questionBank.map((question) => {
+					<QuestionCard question={question} />;
+				})}
+			</section>
 		</>
 	);
 };
