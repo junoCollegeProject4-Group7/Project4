@@ -74,9 +74,7 @@ const QuizSelector = () => {
 				<button className='submit'>Submit</button>
 			</form>
 			<section className='quiz wrapper'>
-				{questionBank.map((question) => {
-					<QuestionCard question={question} />;
-				})}
+				<QuestionCard question={questionBank}></QuestionCard>
 			</section>
 		</>
 	);
