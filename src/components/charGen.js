@@ -3,20 +3,25 @@ import { v4 } from 'uuid';
 import axios from 'axios';
 //api is url: `https://avatars.dicebear.com/api/adventurer-neutral/${id}.svg?scale=25`,
 const CharGen = () => {
+	//avatar saves data from avatarGen for icon to store in firebase
 	const [avatar, setAvatar] = useState('');
+	//saves user input from the user to store in firebase
 	const [userName, setUserName] = useState('');
 
+	//generates a unique key id for seed generation of the dicebear API
 	const id = v4();
 
+	//handles the search and calls back avatar Gen to create an avatar
 	const handleSearch = (e) => {
 		e.preventDefault();
 		avatarGen();
 	};
-	const avatarGen = async (query) => {
+	//function to call the api and generate a random seed based on the unique id using uuid library
+	const avatarGen = async () => {
 		try {
 			const response = await axios
 				.get(
-					`https://avatars.dicebear.com/api/adventurer-neutral/${id}.svg?scale=30`
+					`https://avatars.dicebear.com/api/adventurer-neutral/${id}.svg?scale=35`
 				)
 				.then((res) => {
 					setAvatar(res.config.url);
@@ -28,15 +33,18 @@ const CharGen = () => {
 
 	return (
 		<>
+			{/* form to call handle search to generate image */}
 			<form onSubmit={handleSearch} className='charGen'>
 				<label htmlFor='Character Icon Generator'></label>
 				<input
 					type='text'
 					placeholder='Enter your name'
+					// sets username
 					value={userName}
 					onChange={(e) => setUserName(e.target.value)}
 				/>
 			</form>
+			{/* ternary to display if avatar isnt true */}
 			{!avatar ? (
 				<div></div>
 			) : (

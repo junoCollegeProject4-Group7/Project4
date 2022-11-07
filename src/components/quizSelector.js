@@ -5,11 +5,15 @@ import QuestionCard from './QuestionCard';
 
 //example api https://opentdb.com/api.php?amount=10&category=25&difficulty=medium&type=multiple
 const QuizSelector = () => {
-	const [category, setCategory] = useState(8);
+	//sets search params for the api call
+	const [category, setCategory] = useState(0);
 	const [difficulty, setDifficulty] = useState('');
+	//saves the data to be passed as a prop to question card
 	const [questionBank, setQuestionBank] = useState([]);
+	//loading state
 	const [loading, setIsLoading] = useState(false);
 
+	//calls api based search params and saves it to question bank
 	const questions = async () => {
 		try {
 			if (difficulty && category) {
@@ -24,6 +28,7 @@ const QuizSelector = () => {
 		}
 	};
 
+	//calls the api function if handleSubmit is clicked
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		questions();
