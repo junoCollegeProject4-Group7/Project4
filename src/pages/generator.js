@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import CharGen from '../components/CharGen';
+import QuizSelector from '../components/QuizSelector';
 
 const Generator = () => {
-  return (
-          <h2 className="createAvatar">Avatar</h2>
-  )
-}
+	return (
+		<>
+			<CharGen />
+			<QuizSelector />
+		</>
+	);
+};
 
-export default Generator
+export default Generator;

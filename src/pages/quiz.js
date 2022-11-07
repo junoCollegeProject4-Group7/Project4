@@ -1,7 +1,14 @@
 import React from 'react';
+import CharGen from '../components/charGen';
+import QuizSelector from '../components/quizSelector';
 
-const quiz = () => {
-	return <div></div>;
+const Quiz = () => {
+	return (
+		<>
+			<CharGen />
+			<QuizSelector />
+		</>
+	);
 };
 
-export default quiz;
+export default Quiz;
