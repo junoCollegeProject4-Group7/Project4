@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { v4 } from 'uuid';
 import axios from 'axios';
+import { getDatabase, ref, onValue, push } from 'firebase/database';
+import firebaseConfig from '../firebase';
 //api is url: `https://avatars.dicebear.com/api/adventurer-neutral/${id}.svg?scale=25`,
 const CharGen = () => {
 	//avatar saves data from avatarGen for icon to store in firebase
@@ -15,13 +17,20 @@ const CharGen = () => {
 	const handleSearch = (e) => {
 		e.preventDefault();
 		avatarGen();
+			const newPlayer = {
+				name: userName,
+				avatar: avatar,
+			};
+			const database = getDatabase(firebaseConfig);
+			const databaseRef = ref(database);
+			push(databaseRef, userName, avatar);
 	};
 	//function to call the api and generate a random seed based on the unique id using uuid library
 	const avatarGen = async () => {
 		try {
 			const response = await axios
-				.get(
-					`https://avatars.dicebear.com/api/adventurer-neutral/${id}.svg?scale=35`
+			.get(
+				`https://avatars.dicebear.com/api/adventurer-neutral/${id}.svg?scale=35`
 				)
 				.then((res) => {
 					setAvatar(res.config.url);
