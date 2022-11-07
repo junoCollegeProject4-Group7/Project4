@@ -17,13 +17,26 @@ const QuestionCard = ({ question }) => {
 	const correctAns = question.map(function (answer) {
 		return answer.correct_answer;
 	});
-	console.log(answerBank);
+	const handleSubmit = () => {
+		setCurrentQuestion(currentQuestion + 1);
+		if (currentQuestion === currentQuestion.length) {
+			// return error page import
+		}
+	};
+
+	console.log(question);
 
 	return (
 		<>
 			<div className='card'>
 				<div className='question'>{questions[currentQuestion]}</div>
-				<div className='answers'></div>
+				<div className='answers'>
+					<div>
+						{answerBank[currentQuestion].split(',').map((ans) => {
+							return <button onClick={handleSubmit}>{ans}</button>;
+						})}
+					</div>
+				</div>
 			</div>
 		</>
 	);

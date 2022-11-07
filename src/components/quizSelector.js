@@ -8,6 +8,7 @@ const QuizSelector = () => {
 	const [category, setCategory] = useState(8);
 	const [difficulty, setDifficulty] = useState('');
 	const [questionBank, setQuestionBank] = useState([]);
+	const [loading, setIsLoading] = useState(false);
 
 	const questions = async () => {
 		try {
@@ -16,6 +17,7 @@ const QuizSelector = () => {
 					`https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`
 				);
 				setQuestionBank(res.data.results);
+				setIsLoading(true);
 			}
 		} catch (err) {
 			alert(err);
@@ -73,9 +75,14 @@ const QuizSelector = () => {
 				</select>
 				<button className='submit'>Submit</button>
 			</form>
-			<section className='quiz wrapper'>
-				<QuestionCard question={questionBank}></QuestionCard>
-			</section>
+			{/* fix loading */}
+			{!loading ? (
+				<div>Waitign for results</div>
+			) : (
+				<section className='quiz wrapper'>
+					<QuestionCard question={questionBank}></QuestionCard>
+				</section>
+			)}
 		</>
 	);
 };
