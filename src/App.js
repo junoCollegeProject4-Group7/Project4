@@ -9,6 +9,7 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 import firebaseConfig from './firebase';
 // import Quiz from './components/QuizSelector';
 import Generator from './pages/Generator';
+import FireData from './components/FireData';
 function App() {
 	// const [players, setplayers] = useState([]);
 
@@ -25,6 +26,7 @@ function App() {
 	return (
 		<div className='wrapper'>
 			<Generator />
+            <FireData />
 			{/* <header>
                 <Link to="/">
                     <h1>Trivia Time</h1>
