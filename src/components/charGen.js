@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 } from "uuid";
 import axios from "axios";
 import { getDatabase, ref, onValue, push } from "firebase/database";
@@ -22,13 +22,22 @@ const CharGen = () => {
     // 90% functional, need to figure out error handling for the API
   };
 
-  const pushFirebase = (url) => {
+  useEffect(() => {
+	if (avatar && userName) {
+		console.log('works');
+		pushFirebase();
+	} else {
+		console.log('not working');
+	}
+}, [avatar]);
+
+  const pushFirebase = () => {
     // console.log("avatar ---->", avatar);
     const database = getDatabase(firebaseConfig);
     const databaseRef = ref(database);
     push(databaseRef, {
       name: userName,
-      avatar: url,
+      avatar: avatar,
     });
   };
   //function to call the api and generate a random seed based on the unique id using uuid library
@@ -41,7 +50,8 @@ const CharGen = () => {
         .then((res) => {
         //   console.log("res ---->", res);
           setAvatar(res.config.url);
-          pushFirebase(res.config.url);
+		//   pushing to firebase from local state 
+        //   pushFirebase(res.config.url);
         });
     } catch (error) {
       alert(error);
