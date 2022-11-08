@@ -17,13 +17,14 @@ const CharGen = () => {
 	const handleSearch = (e) => {
 		e.preventDefault();
 		avatarGen();
-			const newPlayer = {
-				name: userName,
-				avatar: avatar,
-			};
-			const database = getDatabase(firebaseConfig);
-			const databaseRef = ref(database);
-			push(databaseRef, userName, avatar);
+		// Note: certain words don't seem to regiter in firebase 
+		const database = getDatabase(firebaseConfig);
+		const databaseRef = ref(database);
+		push(databaseRef, {
+			name: userName,
+			avatar: avatar,
+		});
+		// console.log(avatar, "this is an avatar")
 	};
 	//function to call the api and generate a random seed based on the unique id using uuid library
 	const avatarGen = async () => {
@@ -59,7 +60,7 @@ const CharGen = () => {
 			) : (
 				<div>
 					<p>This is your avatar</p>
-					<img className='icon' src={avatar} alt='icon'></img>;
+					<img className='icon' src={avatar} alt='icon'></img>
 					<h2>{userName}</h2>
 				</div>
 			)}
