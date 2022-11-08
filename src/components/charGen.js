@@ -18,14 +18,19 @@ const CharGen = () => {
 		e.preventDefault();
 		avatarGen();
 		// Note: certain words don't seem to regiter in firebase 
+		
+		
+		// 90% functional, need to figure out error handling for the API 
+	};
+
+	const pushFirebase = () => {
 		const database = getDatabase(firebaseConfig);
 		const databaseRef = ref(database);
 		push(databaseRef, {
 			name: userName,
-			avatar: avatar,
-		});
-		// console.log(avatar, "this is an avatar")
-	};
+			avatar: avatar
+	})
+	}
 	//function to call the api and generate a random seed based on the unique id using uuid library
 	const avatarGen = async () => {
 		try {
@@ -35,6 +40,7 @@ const CharGen = () => {
 				)
 				.then((res) => {
 					setAvatar(res.config.url);
+					pushFirebase();
 				});
 		} catch (error) {
 			alert(error);
