@@ -26,8 +26,6 @@ const CharGen = () => {
 	if (avatar && userName) {
 		console.log('works');
 		pushFirebase();
-	} else {
-		console.log('not working');
 	}
 }, [avatar]);
 
@@ -38,6 +36,7 @@ const CharGen = () => {
     push(databaseRef, {
       name: userName,
       avatar: avatar,
+	  score: 0,
     });
   };
   //function to call the api and generate a random seed based on the unique id using uuid library
