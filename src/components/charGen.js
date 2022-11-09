@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { v4 } from "uuid";
 import axios from "axios";
-import { getDatabase, ref, onValue, push } from "firebase/database";
+import { getDatabase, ref, onValue, push, set } from "firebase/database";
 import firebaseConfig from "../firebase";
 //api is url: `https://avatars.dicebear.com/api/adventurer-neutral/${id}.svg?scale=25`,
 const CharGen = () => {
@@ -25,14 +25,14 @@ const CharGen = () => {
   useEffect(() => {
 	if (avatar && userName) {
 		console.log('works');
-		pushFirebase();
+		pushFirebase(set);
 	}
 }, [avatar]);
 
   const pushFirebase = () => {
     // console.log("avatar ---->", avatar);
     const database = getDatabase(firebaseConfig);
-    const databaseRef = ref(database);
+    const databaseRef = ref(database)
     push(databaseRef, {
       name: userName,
       avatar: avatar,
