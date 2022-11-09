@@ -1,6 +1,7 @@
 import React from 'react';
 
 const About = () => {
+	//asdasd
 	return (
 		<>
 			<div className='aboutModal'>

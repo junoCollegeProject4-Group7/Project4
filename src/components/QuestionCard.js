@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
-import { getDatabase, ref, update } from 'firebase/database';
+import { getDatabase, ref, set, update } from 'firebase/database';
 
 import { useEffect } from 'react';
-import Timer from './timer';
+import Timer from './Timer';
 
 //api is https://opentdb.com/api_config.php
 
@@ -11,6 +11,7 @@ import Timer from './timer';
 const QuestionCard = ({ question, userName }) => {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [score, setScore] = useState(0);
+	const [timerReset, setTimerReset] = useState(false);
 
 	const questions = question.map(function (q) {
 		return q.question;
