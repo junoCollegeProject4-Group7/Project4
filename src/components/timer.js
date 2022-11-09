@@ -22,3 +22,5 @@ const Timer = (currentQuestion) => {
 };
 
 export default Timer;
+
+// changed name

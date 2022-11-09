@@ -10,3 +10,4 @@ const Generator = () => {
 };
 
 export default Generator;
+// changed name

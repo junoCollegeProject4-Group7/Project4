@@ -7,3 +7,5 @@ const Scoreboard = () => {
 };
 
 export default Scoreboard;
+
+// changed name

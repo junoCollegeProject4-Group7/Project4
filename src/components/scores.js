@@ -6,3 +6,5 @@ const Scores = () => {
 };
 
 export default Scores;
+
+// changed name 

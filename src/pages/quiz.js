@@ -11,3 +11,5 @@ const Quiz = () => {
 };
 
 export default Quiz;
+
+// changed name
