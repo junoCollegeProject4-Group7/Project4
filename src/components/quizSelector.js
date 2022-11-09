@@ -1,34 +1,71 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { getDatabase, ref, set } from 'firebase/database';
 import QuestionCard from './QuestionCard';
+import { v4 } from 'uuid';
+
 //api is https://opentdb.com/api_config.php
 
 //example api https://opentdb.com/api.php?amount=10&category=25&difficulty=medium&type=multiple
 const QuizSelector = () => {
-	//sets search params for the api call
 	const [category, setCategory] = useState(0);
 	const [difficulty, setDifficulty] = useState('');
-	//saves the data to be passed as a prop to question card
 	const [questionBank, setQuestionBank] = useState([]);
-	//loading state
 	const [loading, setIsLoading] = useState(false);
+	const [avatar, setAvatar] = useState('');
+	const [userName, setUserName] = useState('');
+	const id = v4();
 
-	//calls api based search params and saves it to question bank
+	const handleSearchAvatar = (e) => {
+		e.preventDefault();
+		avatarGen();
+	};
+
+	useEffect(() => {
+		if (avatar && userName) {
+			pushFirebase();
+		}
+	}, [avatar]);
+
+	const pushFirebase = () => {
+		const db = getDatabase();
+		set(ref(db, 'users/' + userName), {
+			name: userName,
+			avatar: avatar,
+			score: 0,
+		});
+	};
+
+	const avatarGen = async () => {
+		try {
+			const response = await axios
+				.get(
+					`https://avatars.dicebear.com/api/adventurer-neutral/${id}.svg?scale=35`
+				)
+				.then((res) => {
+					setAvatar(res.config.url);
+				});
+		} catch (error) {
+			alert(error);
+		}
+	};
+
 	const questions = async () => {
 		try {
-			if (difficulty && category) {
+			if (difficulty && category && userName && avatar) {
 				const res = await axios.get(
 					`https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`
 				);
 				setQuestionBank(res.data.results);
 				setIsLoading(true);
+			} else {
+				alert('Please select an avatar');
 			}
 		} catch (err) {
 			alert(err);
 		}
 	};
 
-	//calls the api function if handleSubmit is clicked
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		questions();
@@ -36,6 +73,27 @@ const QuizSelector = () => {
 
 	return (
 		<>
+			{/* form to call handle search to generate image */}
+			<form onSubmit={handleSearchAvatar} className='charGen'>
+				<label htmlFor='Character Icon Generator'></label>
+				<input
+					type='text'
+					placeholder='Enter your name'
+					// sets username
+					value={userName}
+					onChange={(e) => setUserName(e.target.value)}
+				/>
+			</form>
+			{/* ternary to display if avatar isnt true */}
+			{!avatar ? (
+				<div></div>
+			) : (
+				<div>
+					<p>This is your avatar</p>
+					<img className='icon' src={avatar} alt='icon'></img>
+					<h2>{userName}</h2>
+				</div>
+			)}
 			<form onSubmit={(e) => handleSubmit(e)}>
 				<label htmlFor='quizCategory'></label>
 				<select
@@ -85,7 +143,11 @@ const QuizSelector = () => {
 				<div>Waitign for results</div>
 			) : (
 				<section className='quiz wrapper'>
-					<QuestionCard question={questionBank}></QuestionCard>
+					<QuestionCard
+						question={questionBank}
+						userName={userName}
+						avatar={avatar}
+					></QuestionCard>
 				</section>
 			)}
 		</>

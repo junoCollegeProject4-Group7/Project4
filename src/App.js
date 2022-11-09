@@ -12,7 +12,6 @@ import Generator from './pages/Generator';
 import FireData from './components/FireData';
 function App() {
 	// const [players, setplayers] = useState([]);
-
 	// useEffect(() => {
 	// 	//     // variable that holds data details
 	// 	const database = getDatabase(firebaseConfig);
@@ -26,7 +25,6 @@ function App() {
 	return (
 		<div className='wrapper'>
 			<Generator />
-            <FireData />
 			{/* <header>
                 <Link to="/">
                     <h1>Trivia Time</h1>
