@@ -142,7 +142,7 @@ const QuizSelector = () => {
 			</form>
 			{/* fix loading */}
 			{!loading ? (
-				<div>Waitign for results</div>
+				<div className='circle'>Waitign for results</div>
 			) : (
 				<section className='quiz wrapper'>
 					<QuestionCard

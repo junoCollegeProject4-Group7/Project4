@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const About = () => {
 	//asdasd
 	return (
@@ -7,10 +7,9 @@ const About = () => {
 			<div className='aboutModal'>
 				<p>
 					Welcome to the quiz app. Here you will select a quiz genre, how hard
-					you want the quiz to be and how your avatar will <Look></Look>
 				</p>
 				<div className='startBtn'>
-					<Link to='/Generator'>Click here to begin</Link>
+					<Link to='../pages/Generator.js'>Click here to begin</Link>
 				</div>
 			</div>
 		</>

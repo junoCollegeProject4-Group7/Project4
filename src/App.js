@@ -1,8 +1,9 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import './App.scss';
-
-// import Generator from './pages/Generator';
-// import About from './pages/About';
+import './fonts/MikadoBold.ttf';
+import About from './pages/About';
+import QuizSelector from './components/QuizSelector';
+import Scoreboard from './pages/Scoreboard';
 import { useState, useEffect } from 'react';
 // this is used to access and store data from/to firebase
 import { getDatabase, ref, onValue } from 'firebase/database';
@@ -10,6 +11,8 @@ import firebaseConfig from './firebase';
 // import Quiz from './components/QuizSelector';
 import Generator from './pages/Generator';
 import FireData from './components/FireData';
+
+
 function App() {
 	// const [players, setplayers] = useState([]);
 	// useEffect(() => {
@@ -24,18 +27,19 @@ function App() {
 	// }, []);
 	return (
 		<div className='wrapper'>
-			<Generator />
-			{/* <header>
+			<header>
                 <Link to="/">
                     <h1>Trivia Time</h1>
                 </Link>
             </header>
+			<Generator />
+			{/* <Scoreboard /> */}
             <Routes>
-                <Route path="/" element={<About />} />
-                <Route path='./pages/Generator.js' element={<Generator />} />
-                {/* <Route path='./pages/Quiz.js' element={<Quiz />} />
-                <Route path='./pages/Scoreboard' element={<Scoreboard />} /> */}
-			{/* </Routes> */}
+                {/* <Route path="/" element={<About />} /> */}
+                {/* <Route path='./pages/Generator.js' element={<Generator />} />
+                <Route path='./pages/Quiz.js' element={<QuizSelector />} /> */}
+                <Route path='./pages/Scoreboard.js' element={<Scoreboard />} />
+			 </Routes>
 		</div>
 	);
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 import { getDatabase, ref, set, update } from 'firebase/database';
-
 import { useEffect } from 'react';
 import Timer from './Timer';
+import Scoreboard from '../pages/Scoreboard';
 
 //api is https://opentdb.com/api_config.php
 
@@ -12,6 +12,7 @@ const QuestionCard = ({ question, userName }) => {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [score, setScore] = useState(0);
 	const [timerReset, setTimerReset] = useState(false);
+	const [showScore, setShowScore] = useState(true);
 
 	const questions = question.map(function (q) {
 		return q.question;
@@ -44,36 +45,38 @@ const QuestionCard = ({ question, userName }) => {
 			setScore(score);
 		}
 
-		if (currentQuestion === currentQuestion.length) {
-			//errorpage
+		const nextQuestion = currentQuestion + 1;
+		if (nextQuestion < questions.length) {
+			setCurrentQuestion(nextQuestion);
+		} else {
+			setShowScore(false);
 		}
 	};
 
 	return (
 		<>
-			<div className='card'>
-				<Timer currentQuestion={currentQuestion} />
-				<div className='question'>{questions[currentQuestion]}</div>
-				<div className='answers'>
-					<div>
-						{/* splits answer array by delimiter and maps the array adding a button to handle  */}
-						{answerBank[currentQuestion].split(',').map((ans) => {
-							return (
-								<button
-									onClick={(e) => {
-										handleSubmit(e);
-									}}
-								>
-									{ans}
-								</button>
-							);
-						})}
+			{showScore ? (
+				<div className='card'>
+					<Timer currentQuestion={currentQuestion} />
+					<div className='question'>{questions[currentQuestion]}</div>
+					<div className='answers'>
+						<div>
+							{/* splits answer array by delimiter and maps the array adding a button to handle  */}
+							{answerBank[currentQuestion].split(',').map((ans) => {
+								return (
+									<button
+										onClick={(e) => {
+											handleSubmit(e);
+										}}
+									>
+										{ans}
+									</button>
+								);
+							})}
+						</div>
 					</div>
 				</div>
-				<div className='score-section'>
-					You scored {score} out of {questions.length}
-				</div>
-			</div>
+			) : <Scoreboard userName={userName}/>}
 		</>
 	);
 };
