@@ -1,54 +1,32 @@
 import React from 'react';
-import score from '../components/QuestionCard';
-import questions from '../components/QuestionCard';
-import QuestionCard from '../components/QuestionCard';
-import { getDatabase, ref, push, onValue } from 'firebase/database';
+import { getDatabase, ref, onValue } from 'firebase/database';
 import { useState, useEffect } from 'react';
 import firebaseConfig from "../firebase";
 
-
-const Scoreboard = ({userName}) => {
-	// this state will track the books from our db
-
-	const [results, setResults] = useState([]);
-
+const Scoreboard = ({ userName }) => {
+	const [results, setResults] = useState(0);
+	const [avatar, setAvatar] = useState("")
 	useEffect(() => {
 		const database = getDatabase(firebaseConfig);
 		const databaseRef = ref(database, "users/" + userName);
 		onValue(databaseRef, (response) => {
-			const data = response.val()
-			const newState = []
-			  // loop through the returned object
-			  for (let key in data) {
-			    // we're coming back to this in a bit
-			    // console.log(key)
-			    // console.log(response.val());
-			    newState.push({ key: key, name: data[key]})
-			    //  {key: , name:}
-
-			  }
-			setResults(newState)
-			console.log(results)
+			const data = response.val().score
+			const dataImg = response.val().avatar
+			setResults(data);
+			setAvatar(dataImg)
+			console.log("RESPONSE data", response.val().avatar)
 		});
 	}, []);
-	console.log(userName)
-	return <div>
-		<h1>Hello</h1>
-			<ol>
-
-                { results.map((result) => {
-                    return(
-                        <li key={name.name}>{result.score}</li>
-                    )
-                }) }
-            </ol>
-		<div className='result-section'>
-			<p>{results.name}</p>
-			You scored {score} out of {questions.length}
+	return (
+		<div>
+			<h1>Hello</h1>
+			<div className='result-section'>
+				<p>{userName}</p>
+				<img className="icon" src={avatar} alt="" />
+				You scored {results} out of 10
+			</div>
 		</div>
-	</div>;
+	)
 };
 
 export default Scoreboard;
-
-// changed name

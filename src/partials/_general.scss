@@ -7,6 +7,10 @@
 //     font-family: 'Mikado', sans-serif;;
 //     src: url(../fonts/MikadoBold.ttf);
 // }
+.wrapper {
+    width: min(80%, 1500px);
+    margin: 0 auto;
+}
 
 html {
     font-family: Mikado;

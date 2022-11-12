@@ -75,6 +75,7 @@ const QuizSelector = () => {
 
 	return (
 		<>
+		{loading ? (
 			{/* form to call handle search to generate image */}
 			<form onSubmit={handleSearchAvatar} className='charGen'>
 				<label htmlFor='Character Icon Generator'></label>
@@ -84,17 +85,17 @@ const QuizSelector = () => {
 					// sets username
 					value={userName}
 					onChange={(e) => setUserName(e.target.value)}
-				/>
+					/>
 			</form>
 			{/* ternary to display if avatar isnt true */}
 			{!avatar ? (
 				<div></div>
-			) : (
-				<div>
+				) : (
+					<div>
 					<p>This is your avatar</p>
 					<img className='icon' src={avatar} alt='icon'></img>
 					<h2>{userName}</h2>
-				</div>
+					</div>
 			)}
 			<form onSubmit={(e) => handleSubmit(e)}>
 				<label htmlFor='quizCategory'></label>
@@ -102,7 +103,7 @@ const QuizSelector = () => {
 					onChange={(e) => {
 						setCategory(e.target.value);
 					}}
-				>
+					>
 					<option value={9}>General knowledge</option>
 					<option value={10}>Books</option>
 					<option value={11}>Film</option>
@@ -132,7 +133,7 @@ const QuizSelector = () => {
 					onChange={(e) => {
 						setDifficulty(e.target.value);
 					}}
-				>
+					>
 					<option value={''}>Pick your difficulty</option>
 					<option value={'easy'}>Easy</option>
 					<option value={'medium'}>Medium</option>
@@ -140,18 +141,21 @@ const QuizSelector = () => {
 				</select>
 				<button className='submit'>Submit</button>
 			</form>
-			{/* fix loading */}
+			) : (
+
+				{/* fix loading */}
 			{!loading ? (
 				<div className='circle'>Waitign for results</div>
-			) : (
+				) : (
 				<section className='quiz wrapper'>
-					<QuestionCard
-						question={questionBank}
-						userName={userName}
-						avatar={avatar}
-					></QuestionCard>
+				<QuestionCard
+				question={questionBank}
+				userName={userName}
+				avatar={avatar}
+				></QuestionCard>
 				</section>
-			)}
+				)}
+				)}
 		</>
 	);
 };

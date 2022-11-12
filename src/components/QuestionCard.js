@@ -76,7 +76,7 @@ const QuestionCard = ({ question, userName }) => {
 						</div>
 					</div>
 				</div>
-			) : <Scoreboard userName={userName}/>}
+			) : <Scoreboard userName={userName} />}
 		</>
 	);
 };

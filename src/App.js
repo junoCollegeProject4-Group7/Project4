@@ -32,13 +32,11 @@ function App() {
                     <h1>Trivia Time</h1>
                 </Link>
             </header>
-			<Generator />
-			{/* <Scoreboard /> */}
             <Routes>
-                {/* <Route path="/" element={<About />} /> */}
-                {/* <Route path='./pages/Generator.js' element={<Generator />} />
-                <Route path='./pages/Quiz.js' element={<QuizSelector />} /> */}
-                <Route path='./pages/Scoreboard.js' element={<Scoreboard />} />
+                <Route exact path="/" element={<About />} />
+                <Route exact path='/pages/Generator.js' element={<Generator />} />
+                {/* <Route path='./pages/Quiz.js' element={<QuizSelector />} /> */}
+                {/* <Route path='./pages/Scoreboard.js' element={<Scoreboard />} /> */}
 			 </Routes>
 		</div>
 	);
