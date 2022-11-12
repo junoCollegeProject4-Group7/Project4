@@ -71,91 +71,93 @@ const QuizSelector = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		questions();
+		this.props.history.push('./QuestionCard.js');
 	};
 
 	return (
 		<>
-		{loading ? (
-			{/* form to call handle search to generate image */}
-			<form onSubmit={handleSearchAvatar} className='charGen'>
-				<label htmlFor='Character Icon Generator'></label>
-				<input
-					type='text'
-					placeholder='Enter your name'
-					// sets username
-					value={userName}
-					onChange={(e) => setUserName(e.target.value)}
-					/>
-			</form>
-			{/* ternary to display if avatar isnt true */}
-			{!avatar ? (
-				<div></div>
-				) : (
-					<div>
-					<p>This is your avatar</p>
-					<img className='icon' src={avatar} alt='icon'></img>
-					<h2>{userName}</h2>
-					</div>
-			)}
-			<form onSubmit={(e) => handleSubmit(e)}>
-				<label htmlFor='quizCategory'></label>
-				<select
-					onChange={(e) => {
-						setCategory(e.target.value);
-					}}
-					>
-					<option value={9}>General knowledge</option>
-					<option value={10}>Books</option>
-					<option value={11}>Film</option>
-					<option value={12}> Music</option>
-					<option value={13}>Musicals & Theatre</option>
-					<option value={14}>Television</option>
-					<option value={15}>Video Games</option>
-					<option value={16}>Board Games</option>
-					<option value={17}>Science & Nature</option>
-					<option value={18}>Computers</option>
-					<option value={19}>Math</option>
-					<option value={20}>Mythology</option>
-					<option value={21}>Sports</option>
-					<option value={22}>Geography</option>
-					<option value={23}>History</option>
-					<option value={24}>Politics</option>
-					<option value={25}>Art</option>
-					<option value={26}>Celebrities</option>
-					<option value={27}>Animals</option>
-					<option value={28}>Vehicles</option>
-					<option value={29}>Comics</option>
-					<option value={30}>Gadgets</option>
-					<option value={31}>Anime & Mangas</option>
-					<option value={32}>Cartoon & Animation</option>
-				</select>
-				<select
-					onChange={(e) => {
-						setDifficulty(e.target.value);
-					}}
-					>
-					<option value={''}>Pick your difficulty</option>
-					<option value={'easy'}>Easy</option>
-					<option value={'medium'}>Medium</option>
-					<option value={'hard'}>Hard</option>
-				</select>
-				<button className='submit'>Submit</button>
-			</form>
-			) : (
+				{/* form to call handle search to generate image */ }
+				<form form form onSubmit={handleSearchAvatar} className='charGen'>
+			<label htmlFor='Character Icon Generator'></label>
+			<input
+				type='text'
+				placeholder='Enter your name'
+				// sets username
+				value={userName}
+				onChange={(e) => setUserName(e.target.value)}
+			/>
+		</form>
+			{/* ternary to display if avatar isnt true */ }
+	{
+		!avatar ? (
+			<div></div>
+		) : (
+			<div>
+				<p>This is your avatar</p>
+				<img className='icon' src={avatar} alt='icon'></img>
+				<h2>{userName}</h2>
+			</div>
+		)
+	}
+	<form onSubmit={(e) => handleSubmit(e)}>
+		<label htmlFor='quizCategory'></label>
+		<select
+			onChange={(e) => {
+				setCategory(e.target.value);
+			}}
+		>
+			<option value={9}>General knowledge</option>
+			<option value={10}>Books</option>
+			<option value={11}>Film</option>
+			<option value={12}> Music</option>
+			<option value={13}>Musicals & Theatre</option>
+			<option value={14}>Television</option>
+			<option value={15}>Video Games</option>
+			<option value={16}>Board Games</option>
+			<option value={17}>Science & Nature</option>
+			<option value={18}>Computers</option>
+			<option value={19}>Math</option>
+			<option value={20}>Mythology</option>
+			<option value={21}>Sports</option>
+			<option value={22}>Geography</option>
+			<option value={23}>History</option>
+			<option value={24}>Politics</option>
+			<option value={25}>Art</option>
+			<option value={26}>Celebrities</option>
+			<option value={27}>Animals</option>
+			<option value={28}>Vehicles</option>
+			<option value={29}>Comics</option>
+			<option value={30}>Gadgets</option>
+			<option value={31}>Anime & Mangas</option>
+			<option value={32}>Cartoon & Animation</option>
+		</select>
+		<select
+			onChange={(e) => {
+				setDifficulty(e.target.value);
+			}}
+		>
+			<option value={''}>Pick your difficulty</option>
+			<option value={'easy'}>Easy</option>
+			<option value={'medium'}>Medium</option>
+			<option value={'hard'}>Hard</option>
+		</select>
+		<button onClick={handleSubmit} className='submit'>Submit</button>
+	</form>
 
-				{/* fix loading */}
-			{!loading ? (
-				<div className='circle'>Waitign for results</div>
-				) : (
-				<section className='quiz wrapper'>
-				<QuestionCard
+	{/* fix loading */ }
+			{
+	!loading ? (
+		<div className='circle'>Waitign for results</div>
+	) : (
+		<section className='quiz wrapper'>
+			<QuestionCard
 				question={questionBank}
 				userName={userName}
 				avatar={avatar}
-				></QuestionCard>
-				</section>
-				)}
-				)}
+			></QuestionCard>
+		</section>
+	)
+}
 		</>
 	);
 };
