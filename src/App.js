@@ -11,7 +11,7 @@ import firebaseConfig from './firebase';
 // import Quiz from './components/QuizSelector';
 import Generator from './pages/Generator';
 import FireData from './components/FireData';
-
+import QuestionCard from './components/QuestionCard';
 
 function App() {
 	// const [players, setplayers] = useState([]);
@@ -28,16 +28,16 @@ function App() {
 	return (
 		<div className='wrapper'>
 			<header>
-                <Link to="/">
-                    <h1>Trivia Time</h1>
-                </Link>
-            </header>
-            <Routes>
-                <Route exact path="/" element={<About />} />
-                <Route exact path='/pages/Generator.js' element={<Generator />} />
-                {/* <Route path='./pages/Quiz.js' element={<QuizSelector />} /> */}
-                {/* <Route path='./pages/Scoreboard.js' element={<Scoreboard />} /> */}
-			 </Routes>
+				<Link to='/'>
+					<h1>Trivia Time</h1>
+				</Link>
+			</header>
+			<Routes>
+				{/* <Route exact path="/" element={<About />} /> */}
+				<Route exact path='/' element={<Generator />} />
+				<Route exact path='/pages/questioncard' element={<QuestionCard />} />
+				{/* <Route path='./pages/Scoreboard.js' element={<Scoreboard />} /> */}
+			</Routes>
 		</div>
 	);
 }

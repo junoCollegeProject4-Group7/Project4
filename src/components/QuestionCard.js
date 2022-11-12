@@ -19,7 +19,8 @@ const QuestionCard = ({ question, userName }) => {
 	});
 
 	const answerBank = question.map(function (ans) {
-		return ans.incorrect_answers + ',' + ans.correct_answer;
+		const answer = ans.incorrect_answers + ',' + ans.correct_answer;
+		return answer.split(',');
 	});
 
 	const correctAns = question.map(function (answer) {
@@ -58,11 +59,18 @@ const QuestionCard = ({ question, userName }) => {
 			{showScore ? (
 				<div className='card'>
 					<Timer currentQuestion={currentQuestion} />
-					<div className='question'>{questions[currentQuestion]}</div>
+					<div className='question'>
+						{questions[currentQuestion]
+							.replace(/&quot;/g, '"')
+							.replace(/&rsquo;/g, "'")
+							.replace(/&Eacute;/g, 'é')
+							.replace(/&#039;/g, "'")
+							.replace(/&shy;/g, '')}
+					</div>
 					<div className='answers'>
 						<div>
 							{/* splits answer array by delimiter and maps the array adding a button to handle  */}
-							{answerBank[currentQuestion].split(',').map((ans) => {
+							{answerBank[currentQuestion].map((ans) => {
 								return (
 									<button
 										onClick={(e) => {
@@ -76,7 +84,9 @@ const QuestionCard = ({ question, userName }) => {
 						</div>
 					</div>
 				</div>
-			) : <Scoreboard userName={userName} />}
+			) : (
+				<Scoreboard userName={userName} />
+			)}
 		</>
 	);
 };
