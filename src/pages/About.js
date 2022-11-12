@@ -1,14 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import mascot from '../assests/meeseeks-removebg-preview.png';
 const About = () => {
-	//asdasd
+
 	return (
 		<>
-			<div className='aboutModal'>
-				<p>
-					Welcome to the quiz app. Here you will select a quiz genre, how hard
-				</p>
-				<div className='startBtn'>
+			<div className='aboutModal wrapper'>
+				<img className="mascot" src={mascot} />
+			</div>
+			<div className='aboutDescription'>
+				<h3>
+					Welcome to Trivia Time! Learn and Have fun, Create your Avatar, Decide your Topic and Difficulty then the brain teaser begins! Good Luck
+				</h3>
+				<div className='begin'>
 					<Link to='../pages/Generator.js'>Click here to begin</Link>
 				</div>
 			</div>
