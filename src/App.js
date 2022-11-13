@@ -11,6 +11,7 @@ import firebaseConfig from './firebase';
 // import Quiz from './components/QuizSelector';
 import Generator from './pages/Generator';
 import FireData from './components/FireData';
+import { Header } from './components/Header';
 
 
 function App() {
@@ -26,19 +27,17 @@ function App() {
 	// 	});
 	// }, []);
 	return (
-		<div className='wrapper'>
-			<header>
-                <Link to="/">
-                    <h1>Trivia Time</h1>
-                </Link>
-            </header>
-            <Routes>
-                <Route exact path="/" element={<About />} />
-                <Route exact path='/pages/Generator.js' element={<Generator />} />
-                {/* <Route path='./pages/Quiz.js' element={<QuizSelector />} /> */}
-                {/* <Route path='./pages/Scoreboard.js' element={<Scoreboard />} /> */}
-			 </Routes>
-		</div>
+		<>
+			<Header />
+			<>
+				<Routes>
+					<Route exact path="/" element={<About />} />
+					<Route exact path='/pages/Generator.js' element={<Generator />} />
+					{/* <Route path='./pages/Quiz.js' element={<QuizSelector />} /> */}
+					<Route exact path='/pages/Scoreboard.js' element={<Scoreboard />} />
+				</Routes>
+			</>
+		</>
 	);
 }
 

@@ -1,11 +1,6 @@
 $circleSize: 3em;
 $circleBorderSize: $circleSize * 0.07;
 
-// body
-// {
-//   background-color: black;    
-// }
- 
 @keyframes spin
 {
   0% { transform: rotate(0);}  

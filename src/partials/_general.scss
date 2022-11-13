@@ -1,70 +1,9 @@
 @use "./setup";
 
-// @import url(../assets/Mikado\ Bold.otf);
-
-
-// @font-face {
-//     font-family: 'Mikado', sans-serif;;
-//     src: url(../fonts/MikadoBold.ttf);
-// }
 .wrapper {
     width: min(80%, 1500px);
     margin: 0 auto;
 }
-
-@keyframes spin
-{
-  0% { transform: rotate(0);}  
-  100% { transform: rotate(360deg); }
-} 
-
-@-webkit-keyframes slide {
-    100% { left: 0; }
-}
-
-@keyframes slide {
-    100% { left: 0; }
-}
-
-.aboutModal {
-    background: conic-gradient(#FFDD33 0 7%,#FFA602 0 21%,#E21B3C 0 36%,#ed51aa 0 50%,#864CBF 0 64%,#0572B9 0 78%,#66BF39 0 93%,#FFDD33 0 100%);
-    min-height: 200vh;
-    position: absolute;
-    height: 300vh;
-    width: 300vw;
-    top: -105%;
-    left: -85%;
-    z-index: -1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: spin 3s;
-    .mascot {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        animation: spin 3s;
-    }
-}
-
-// .aboutDescription {
-//     align-self: center;
-//     text-align: left;
-//     -webkit-transform: translateX(-200%);
-//     transform: translateX(-200%);
-//     opacity: 0;
-//     -webkit-animation: BannerSections_slide-in-anim__0NiAd 3s ease-out forwards;
-//     animation: slide 3s ease-out forwards;
-//     min-height: 25em;
-//     display: flex;
-//     flex-direction: column!important;
-//     justify-content: center;
-//     position: absolute;
-//     top: 15%;
-//     left: 34%;
-//     padding-right: 15%;
-// }
-
 
 html {
     font-family: Mikado;
@@ -73,11 +12,11 @@ html {
 
 h1 {
     color: #ffffff;
-        text-transform: uppercase;
-        margin: 2em 0 0 0;
-        line-height: 1;
-        padding-bottom: 1vh;
-    }
+    text-transform: uppercase;
+    margin: 2em 0 0 0;
+    line-height: 1;
+    padding-bottom: 1vh;
+}
 
 h3 {
     font-family: Mikado, serif;
@@ -93,37 +32,31 @@ img {
     max-height: 250px;
 }
 
-select, input, button, .begin {
+select,
+input,
+button {
     background-color: #ff9000;
     color: #fff;
     text-shadow: 2px 2px 2px #00000020;
     font-size: 1.4em;
-    font-family: Mikado ,serif;
+    font-family: Mikado, serif;
     border: 3px solid #ffffff50;
     text-transform: uppercase;
     border-radius: 1em;
     padding: 10px 15px;
     box-shadow: 2px 5px #00000030;
     margin-top: 2vh;
-    }
-
-.begin {
-    width: fit-content;
-    color: #F2F2F2;
-    text-decoration: none;
 }
 
 a {
     list-style: none;
     text-decoration: none;
+
     &:active {
-        color: white;
+        color: red;
     }
+
     &:focus {
-        color: #F2F2F2;
-    }
-    &:hover {
-        transition: 0.7s;
         color: #F2F2F2;
     }
 }
