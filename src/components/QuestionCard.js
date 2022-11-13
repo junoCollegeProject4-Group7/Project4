@@ -20,6 +20,7 @@ const QuestionCard = ({ question, userName }) => {
 
 	const answerBank = question.map(function (ans) {
 		const answer = ans.incorrect_answers + ',' + ans.correct_answer;
+
 		return answer.split(',');
 	});
 
@@ -53,6 +54,8 @@ const QuestionCard = ({ question, userName }) => {
 			setShowScore(false);
 		}
 	};
+	console.log(questions);
+	console.log(answerBank);
 
 	return (
 		<>
@@ -60,27 +63,36 @@ const QuestionCard = ({ question, userName }) => {
 				<div className='card'>
 					<Timer currentQuestion={currentQuestion} />
 					<div className='question'>
-						{questions[currentQuestion]
-							.replace(/&quot;/g, '"')
-							.replace(/&rsquo;/g, "'")
-							.replace(/&Eacute;/g, 'é')
-							.replace(/&#039;/g, "'")
-							.replace(/&shy;/g, '')}
+						{/* questions.length > 0 && */}
+						{questions.length > 0 &&
+							questions[currentQuestion]
+								.replace(/&quot;/g, '"')
+								.replace(/&rsquo;/g, "'")
+								.replace(/&Eacute;/g, 'é')
+								.replace(/&#039;/g, "'")
+								.replace(/&shy;/g, '')}
 					</div>
 					<div className='answers'>
 						<div>
 							{/* splits answer array by delimiter and maps the array adding a button to handle  */}
-							{answerBank[currentQuestion].map((ans) => {
-								return (
-									<button
-										onClick={(e) => {
-											handleSubmit(e);
-										}}
-									>
-										{ans}
-									</button>
-								);
-							})}
+							{/* answerBank[currentQuestion] && */}
+							{answerBank[currentQuestion] &&
+								answerBank[currentQuestion].map((ans) => {
+									return (
+										<button
+											onClick={(e) => {
+												handleSubmit(e);
+											}}
+										>
+											{ans
+												.replace(/&quot;/g, '"')
+												.replace(/&rsquo;/g, "'")
+												.replace(/&Eacute;/g, 'é')
+												.replace(/&#039;/g, "'")
+												.replace(/&shy;/g, '')}
+										</button>
+									);
+								})}
 						</div>
 					</div>
 				</div>

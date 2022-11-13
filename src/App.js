@@ -12,6 +12,7 @@ import firebaseConfig from './firebase';
 import Generator from './pages/Generator';
 import FireData from './components/FireData';
 import QuestionCard from './components/QuestionCard';
+import Error from './pages/Error';
 
 function App() {
 	// const [players, setplayers] = useState([]);
@@ -33,10 +34,10 @@ function App() {
 				</Link>
 			</header>
 			<Routes>
-				{/* <Route exact path="/" element={<About />} /> */}
-				<Route exact path='/' element={<Generator />} />
+				<Route exact path='/' element={<About />} />
+				<Route exact path='/gen' element={<Generator />} />
 				<Route exact path='/pages/questioncard' element={<QuestionCard />} />
-				{/* <Route path='./pages/Scoreboard.js' element={<Scoreboard />} /> */}
+				<Route exact path='/pages/error' element={<Error />} />
 			</Routes>
 		</div>
 	);
