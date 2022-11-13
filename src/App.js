@@ -11,7 +11,9 @@ import firebaseConfig from './firebase';
 // import Quiz from './components/QuizSelector';
 import Generator from './pages/Generator';
 import FireData from './components/FireData';
-import { Header } from './components/Header';
+import QuestionCard from './components/QuestionCard';
+import Error from './pages/Error';import 
+{ Header } from './components/Header';
 
 
 function App() {
@@ -29,14 +31,14 @@ function App() {
 	return (
 		<>
 			<Header />
-			<>
-				<Routes>
-					<Route exact path="/" element={<About />} />
-					<Route exact path='/pages/Generator.js' element={<Generator />} />
-					{/* <Route path='./pages/Quiz.js' element={<QuizSelector />} /> */}
-					<Route exact path='/pages/Scoreboard.js' element={<Scoreboard />} />
-				</Routes>
-			</>
+            <Routes>
+                <Route exact path="/" element={<About />} />
+                <Route exact path='/pages/Generator.js' element={<Generator />} />
+                {/* <Route path='./pages/Quiz.js' element={<QuizSelector />} /> */}
+                {/* <Route path='./pages/Scoreboard.js' element={<Scoreboard />} /> */}
+				<Route exact path='/pages/questioncard' element={<QuestionCard />} />
+				<Route exact path='/pages/error' element={<Error />} />
+			 </Routes>
 		</>
 	);
 }

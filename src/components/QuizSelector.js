@@ -2,8 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { getDatabase, ref, set } from 'firebase/database';
 import QuestionCard from './QuestionCard';
+import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
-
 
 // changed name
 //api is https://opentdb.com/api_config.php
@@ -13,7 +13,9 @@ const QuizSelector = () => {
 	const [category, setCategory] = useState(0);
 	const [difficulty, setDifficulty] = useState('');
 	const [questionBank, setQuestionBank] = useState([]);
-	const [loading, setIsLoading] = useState(false);
+	const [loading, setIsLoading] = useState(true);
+	const [avatarLoading, setAvatarLoading] = useState(true);
+	const [quizLoad, setQuizLoad] = useState(true);
 	const [avatar, setAvatar] = useState('');
 	const [userName, setUserName] = useState('');
 	const id = v4();
@@ -21,6 +23,7 @@ const QuizSelector = () => {
 	const handleSearchAvatar = (e) => {
 		e.preventDefault();
 		avatarGen();
+		setAvatarLoading(false);
 	};
 
 	useEffect(() => {
@@ -59,7 +62,6 @@ const QuizSelector = () => {
 					`https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`
 				);
 				setQuestionBank(res.data.results);
-				setIsLoading(true);
 			} else {
 				alert('Please select an avatar');
 			}
@@ -68,98 +70,130 @@ const QuizSelector = () => {
 		}
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmitQuestion = (e) => {
 		e.preventDefault();
 		questions();
-		this.props.history.push('./QuestionCard.js');
+		setIsLoading(false);
 	};
 
-	return (
-		<>
-				{/* form to call handle search to generate image */ }
-				<form form form onSubmit={handleSearchAvatar} className='charGen'>
-			<label htmlFor='Character Icon Generator'></label>
-			<input
-				type='text'
-				placeholder='Enter your name'
-				// sets username
-				value={userName}
-				onChange={(e) => setUserName(e.target.value)}
-			/>
-		</form>
-			{/* ternary to display if avatar isnt true */ }
-	{
-		!avatar ? (
-			<div></div>
-		) : (
-			<div>
-				<p>This is your avatar</p>
-				<img className='icon' src={avatar} alt='icon'></img>
-				<h2>{userName}</h2>
-			</div>
-		)
-	}
-	<form onSubmit={(e) => handleSubmit(e)}>
-		<label htmlFor='quizCategory'></label>
-		<select
-			onChange={(e) => {
-				setCategory(e.target.value);
-			}}
-		>
-			<option value={9}>General knowledge</option>
-			<option value={10}>Books</option>
-			<option value={11}>Film</option>
-			<option value={12}> Music</option>
-			<option value={13}>Musicals & Theatre</option>
-			<option value={14}>Television</option>
-			<option value={15}>Video Games</option>
-			<option value={16}>Board Games</option>
-			<option value={17}>Science & Nature</option>
-			<option value={18}>Computers</option>
-			<option value={19}>Math</option>
-			<option value={20}>Mythology</option>
-			<option value={21}>Sports</option>
-			<option value={22}>Geography</option>
-			<option value={23}>History</option>
-			<option value={24}>Politics</option>
-			<option value={25}>Art</option>
-			<option value={26}>Celebrities</option>
-			<option value={27}>Animals</option>
-			<option value={28}>Vehicles</option>
-			<option value={29}>Comics</option>
-			<option value={30}>Gadgets</option>
-			<option value={31}>Anime & Mangas</option>
-			<option value={32}>Cartoon & Animation</option>
-		</select>
-		<select
-			onChange={(e) => {
-				setDifficulty(e.target.value);
-			}}
-		>
-			<option value={''}>Pick your difficulty</option>
-			<option value={'easy'}>Easy</option>
-			<option value={'medium'}>Medium</option>
-			<option value={'hard'}>Hard</option>
-		</select>
-		<button onClick={handleSubmit} className='submit'>Submit</button>
-	</form>
+	//true and true and get this
+	if (avatarLoading && loading) {
+		return (
+			<form onSubmit={(e) => handleSearchAvatar(e)} className='charGen'>
+				<label htmlFor='Character Icon Generator'></label>
+				<input
+					type='text'
+					placeholder='Enter your name'
+					// sets username
+					value={userName}
+					onChange={(e) => setUserName(e.target.value)}
+				/>
+			</form>
+		);
+	} else if (loading && !avatarLoading) {
+		return (
+			<>
+				<div>
+					<p>This is your avatar</p>
+					<img className='icon' src={avatar} alt='icon'></img>
+					<h2>{userName}</h2>
+				</div>
+				<form onSubmit={(e) => handleSubmitQuestion(e)}>
+					<label htmlFor='quizCategory'></label>
+					<select
+						onChange={(e) => {
+							setCategory(e.target.value);
+						}}
+					>
+						<option value={9}>General knowledge</option>
+						<option value={10}>Books</option>
+						<option value={11}>Film</option>
+						<option value={12}> Music</option>
+						<option value={13}>Musicals & Theatre</option>
+						<option value={14}>Television</option>
+						<option value={15}>Video Games</option>
+						<option value={16}>Board Games</option>
+						<option value={17}>Science & Nature</option>
+						<option value={18}>Computers</option>
+						<option value={19}>Math</option>
+						<option value={20}>Mythology</option>
+						<option value={21}>Sports</option>
+						<option value={22}>Geography</option>
+						<option value={23}>History</option>
+						<option value={24}>Politics</option>
+						<option value={25}>Art</option>
+						<option value={26}>Celebrities</option>
+						<option value={27}>Animals</option>
+						<option value={28}>Vehicles</option>
+						<option value={29}>Comics</option>
+						<option value={30}>Gadgets</option>
+						<option value={31}>Anime & Mangas</option>
+						<option value={32}>Cartoon & Animation</option>
+					</select>
+					<select
+						onChange={(e) => {
+							setDifficulty(e.target.value);
+						}}
+					>
+						<option value={''}>Pick your difficulty</option>
+						<option value={'easy'}>Easy</option>
+						<option value={'medium'}>Medium</option>
+						<option value={'hard'}>Hard</option>
+					</select>
+					<button className='submit'>Submit</button>
+				</form>
+			</>
+		);
+		//works
+		// } else if (!avatarLoading && !loading) {
+		// 	return <div>hello</div>;
+		// }
 
-	{/* fix loading */ }
-			{
-	!loading ? (
-		<div className='circle'>Waitign for results</div>
-	) : (
-		<section className='quiz wrapper'>
-			<QuestionCard
-				question={questionBank}
-				userName={userName}
-				avatar={avatar}
-			></QuestionCard>
-		</section>
-	)
-}
-		</>
-	);
+		//links to a white page, doesnt work
+	} else if (!avatarLoading && !loading) {
+		return (
+			<>
+				<QuestionCard
+					question={questionBank}
+					userName={userName}
+					avatar={avatar}
+				></QuestionCard>
+			</>
+		);
+	}
+	// } else if (!quizLoad) {
+	// 	return (
+	// 		<>
+	// 			<div>hello</div>
+	// 			{/*
+	// 			<QuestionCard
+	// 				question={questionBank}
+	// 				userName={userName}
+	// 				avatar={avatar}
+	// 			></QuestionCard> */}
+	// 		</>
+	// 	);
+	// }
+	//why does this work but not with the api
+	// } else if (!avatarLoading && !loading) {
+	// 	return (
+	// 		<>
+	// 			<div>Spinner</div>
+	// 		</>
+	// 	);
+
+	// } else if (questionBank) {
+	// 	return (
+	// 		<>
+	// 			<QuestionCard
+	// 				question={questionBank}
+	// 				userName={userName}
+	// 				avatar={avatar}
+	// 			></QuestionCard>
+	// 		</>
+	// 	);
+	// }
+	//false and false
 };
 
 export default QuizSelector;
