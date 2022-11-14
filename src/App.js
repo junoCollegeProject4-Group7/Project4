@@ -1,9 +1,8 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import './App.scss';
-import './fonts/MikadoBold.ttf';
-import About from './pages/About';
-import QuizSelector from './components/QuizSelector';
-import Scoreboard from './pages/Scoreboard';
+
+// import Generator from './pages/Generator';
+// import About from './pages/About';
 import { useState, useEffect } from 'react';
 // this is used to access and store data from/to firebase
 import { getDatabase, ref, onValue } from 'firebase/database';
@@ -11,11 +10,6 @@ import firebaseConfig from './firebase';
 // import Quiz from './components/QuizSelector';
 import Generator from './pages/Generator';
 import FireData from './components/FireData';
-import QuestionCard from './components/QuestionCard';
-import Error from './pages/Error';import 
-{ Header } from './components/Header';
-
-
 function App() {
 	// const [players, setplayers] = useState([]);
 	// useEffect(() => {
@@ -29,17 +23,20 @@ function App() {
 	// 	});
 	// }, []);
 	return (
-		<>
-			<Header />
+		<div className='wrapper'>
+			<Generator />
+			{/* <header>
+                <Link to="/">
+                    <h1>Trivia Time</h1>
+                </Link>
+            </header>
             <Routes>
-                <Route exact path="/" element={<About />} />
-                <Route exact path='/pages/Generator.js' element={<Generator />} />
-                {/* <Route path='./pages/Quiz.js' element={<QuizSelector />} /> */}
-                <Route exact path='/pages/Scoreboard.js' element={<Scoreboard />} />
-				<Route exact path='/pages/Questioncard' element={<QuestionCard />} />
-				<Route exact path='/pages/Error' element={<Error />} />
-			 </Routes>
-		</>
+                <Route path="/" element={<About />} />
+                <Route path='./pages/Generator.js' element={<Generator />} />
+                {/* <Route path='./pages/Quiz.js' element={<Quiz />} />
+                <Route path='./pages/Scoreboard' element={<Scoreboard />} /> */}
+			{/* </Routes> */}
+		</div>
 	);
 }
 

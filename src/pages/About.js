@@ -1,25 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import mascot from '../assests/meeseeks-removebg-preview.png';
+
 const About = () => {
+	//asdasd
 	return (
-		<div className='aboutHome wrapper'>
-			<div className='bannerContainer'>
-				<div className='aboutModal'>
-					<img className="mascot" src={mascot} />
-				</div>
-				<div className='aboutDescription wrapper'>
-					<h1>Trivia Time</h1>
-					<h3>
-						Welcome to Trivia Time! Learn and Have fun, Create your Avatar, Decide your Topic and Difficulty then the brain teaser begins! Good Luck
-					</h3>
-					<div className='begin'>
-						<Link to='../pages/Generator.js'>Click here to begin</Link>
-					</div>
+		<>
+			<div className='aboutModal'>
+				<p>
+					Welcome to the quiz app. Here you will select a quiz genre, how hard
+					you want the quiz to be and how your avatar will <Look></Look>
+				</p>
+				<div className='startBtn'>
+					<Link to='/Generator'>Click here to begin</Link>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 
 export default About;
+
+// changed name
