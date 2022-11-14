@@ -39,13 +39,14 @@ const QuestionCard = ({ question, userName, resetTimer }) => {
   }, [score]);
 
   const handleSubmit = (e) => {
-    // resetTimer();
+    resetTimer();
     setCurrentQuestion(currentQuestion + 1);
     if (e.target.textContent === correctAns[currentQuestion]) {
       setScore(score + 1);
     } else {
       setScore(score);
     }
+
 
 		const nextQuestion = currentQuestion + 1;
 		if (nextQuestion < questions.length) {
