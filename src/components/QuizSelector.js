@@ -20,6 +20,33 @@ const QuizSelector = () => {
 	const [userName, setUserName] = useState('');
 	const id = v4();
 
+	const answerTime = 30;
+	const [count, setCount] = useState(answerTime);
+	const [timer, setTimer] = useState(undefined);
+
+	useEffect(() => {
+		if (count === 0) stopTimer();
+	  }, [count]);
+
+	  const startTimer = () => {
+		setTimer(
+		  setInterval(() => {
+			setCount((prevCount) => prevCount - 1);
+		  }, 1000)
+		);
+	  };
+
+
+	  const resetTimer = () => {
+		clearInterval(timer);
+		setCount(answerTime);
+		startTimer();
+	  };
+	
+	  const stopTimer = () => {
+		clearInterval(timer);
+	  };
+
 	const handleSearchAvatar = (e) => {
 		e.preventDefault();
 		avatarGen();
@@ -74,6 +101,7 @@ const QuizSelector = () => {
 		e.preventDefault();
 		questions();
 		setIsLoading(false);
+		startTimer();
 	};
 
 	//true and true and get this
@@ -157,6 +185,9 @@ const QuizSelector = () => {
 					question={questionBank}
 					userName={userName}
 					avatar={avatar}
+					resetTimer={resetTimer}
+					stopTimer={stopTimer}
+					count={count}
 				></QuestionCard>
 			</>
 		);
