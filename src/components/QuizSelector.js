@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { getDatabase, ref, set } from 'firebase/database';
 import QuestionCard from './QuestionCard';
-import Timer from './Timer';
 import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
 
@@ -11,12 +10,12 @@ import { v4 } from 'uuid';
 
 //example api https://opentdb.com/api.php?amount=10&category=25&difficulty=medium&type=multiple
 const QuizSelector = () => {
-	const [category, setCategory] = useState(0);
-  const [difficulty, setDifficulty] = useState("");
+  const [category, setCategory] = useState(0);
+  const [difficulty, setDifficulty] = useState('');
   const [questionBank, setQuestionBank] = useState([]);
   const [loading, setIsLoading] = useState(false);
-  const [avatar, setAvatar] = useState("");
-  const [userName, setUserName] = useState("");
+  const [avatar, setAvatar] = useState('');
+  const [userName, setUserName] = useState('');
   const id = v4();
 
   const answerTime = 30;
@@ -45,42 +44,42 @@ const QuizSelector = () => {
     clearInterval(timer);
   };
 
-	const handleSearchAvatar = (e) => {
-		e.preventDefault();
-		avatarGen();
-		setAvatarLoading(false);
-	};
+  const handleSearchAvatar = (e) => {
+    e.preventDefault();
+    avatarGen();
+    setAvatarLoading(false);
+  };
 
-	useEffect(() => {
-		if (avatar && userName) {
-			pushFirebase();
-		}
-	}, [avatar]);
+  useEffect(() => {
+    if (avatar && userName) {
+      pushFirebase();
+    }
+  }, [avatar]);
 
-	const pushFirebase = () => {
-		const db = getDatabase();
-		set(ref(db, 'users/' + userName), {
-			name: userName,
-			avatar: avatar,
-			score: 0,
-		});
-	};
+  const pushFirebase = () => {
+    const db = getDatabase();
+    set(ref(db, 'users/' + userName), {
+      name: userName,
+      avatar: avatar,
+      score: 0,
+    });
+  };
 
-	const avatarGen = async () => {
-		try {
-			const response = await axios
-				.get(
-					`https://avatars.dicebear.com/api/adventurer-neutral/${id}.svg?scale=35`
-				)
-				.then((res) => {
-					setAvatar(res.config.url);
-				});
-		} catch (error) {
-			alert(error);
-		}
-	};
+  const avatarGen = async () => {
+    try {
+      const response = await axios
+        .get(
+          `https://avatars.dicebear.com/api/adventurer-neutral/${id}.svg?scale=35`
+        )
+        .then((res) => {
+          setAvatar(res.config.url);
+        });
+    } catch (error) {
+      alert(error);
+    }
+  };
 
-	const questions = async () => {
+  const questions = async () => {
     try {
       if (difficulty && category && userName && avatar) {
         const res = await axios.get(
@@ -89,7 +88,7 @@ const QuizSelector = () => {
         setQuestionBank(res.data.results);
         setIsLoading(true);
       } else {
-        alert("Please select an avatar");
+        alert('Please select an avatar');
       }
     } catch (err) {
       alert(err);
@@ -101,7 +100,7 @@ const QuizSelector = () => {
     questions();
     startTimer();
   };
-	//true and true and get this
+  //true and true and get this
   return (
     <>
       {/* form to call handle search to generate image */}
@@ -162,10 +161,10 @@ const QuizSelector = () => {
             setDifficulty(e.target.value);
           }}
         >
-          <option value={""}>Pick your difficulty</option>
-          <option value={"easy"}>Easy</option>
-          <option value={"medium"}>Medium</option>
-          <option value={"hard"}>Hard</option>
+          <option value={''}>Pick your difficulty</option>
+          <option value={'easy'}>Easy</option>
+          <option value={'medium'}>Medium</option>
+          <option value={'hard'}>Hard</option>
         </select>
         <button className="submit">Submit</button>
       </form>
@@ -179,8 +178,9 @@ const QuizSelector = () => {
             userName={userName}
             avatar={avatar}
             resetTimer={resetTimer}
+            stopTimer={stopTimer}
+            count={count}
           ></QuestionCard>
-          <Timer count={count} />
         </section>
       )}
     </>
