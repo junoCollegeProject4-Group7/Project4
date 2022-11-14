@@ -45,7 +45,7 @@ const QuizSelector = () => {
 		try {
 			const response = await axios
 				.get(
-					`https://avatars.dicebear.com/api/adventurer-neutral/${id}.svg?scale=35`
+					`https://avatars.dicebear.com/api/adventurer-neutral/${id}.svg?scale=75`
 				)
 				.then((res) => {
 					setAvatar(res.config.url);
@@ -93,55 +93,55 @@ const QuizSelector = () => {
 	} else if (loading && !avatarLoading) {
 		return (
 			<>
-				<div>
-					<p>This is your avatar</p>
-					<img className='icon' src={avatar} alt='icon'></img>
-					<h2>{userName}</h2>
+				<div className='userCreate'>
+					{/* <p>This is your avatar</p> */}
+					<h2>Hello, {userName}!</h2>
+					<img className='userAvatar' src={avatar} alt='API Generated Avatar'></img>
+					<form onSubmit={(e) => handleSubmitQuestion(e)}>
+						<label htmlFor='quizCategory'></label>
+						<select
+							onChange={(e) => {
+								setCategory(e.target.value);
+							}}
+						>
+							<option value={9}>General knowledge</option>
+							<option value={10}>Books</option>
+							<option value={11}>Film</option>
+							<option value={12}> Music</option>
+							<option value={13}>Musicals & Theatre</option>
+							<option value={14}>Television</option>
+							<option value={15}>Video Games</option>
+							<option value={16}>Board Games</option>
+							<option value={17}>Science & Nature</option>
+							<option value={18}>Computers</option>
+							<option value={19}>Math</option>
+							<option value={20}>Mythology</option>
+							<option value={21}>Sports</option>
+							<option value={22}>Geography</option>
+							<option value={23}>History</option>
+							<option value={24}>Politics</option>
+							<option value={25}>Art</option>
+							<option value={26}>Celebrities</option>
+							<option value={27}>Animals</option>
+							<option value={28}>Vehicles</option>
+							<option value={29}>Comics</option>
+							<option value={30}>Gadgets</option>
+							<option value={31}>Anime & Mangas</option>
+							<option value={32}>Cartoon & Animation</option>
+						</select>
+						<select
+							onChange={(e) => {
+								setDifficulty(e.target.value);
+							}}
+						>
+							<option value={''}>Pick your difficulty</option>
+							<option value={'easy'}>Easy</option>
+							<option value={'medium'}>Medium</option>
+							<option value={'hard'}>Hard</option>
+						</select>
+						<button className='submit'>Submit</button>
+					</form>
 				</div>
-				<form onSubmit={(e) => handleSubmitQuestion(e)}>
-					<label htmlFor='quizCategory'></label>
-					<select
-						onChange={(e) => {
-							setCategory(e.target.value);
-						}}
-					>
-						<option value={9}>General knowledge</option>
-						<option value={10}>Books</option>
-						<option value={11}>Film</option>
-						<option value={12}> Music</option>
-						<option value={13}>Musicals & Theatre</option>
-						<option value={14}>Television</option>
-						<option value={15}>Video Games</option>
-						<option value={16}>Board Games</option>
-						<option value={17}>Science & Nature</option>
-						<option value={18}>Computers</option>
-						<option value={19}>Math</option>
-						<option value={20}>Mythology</option>
-						<option value={21}>Sports</option>
-						<option value={22}>Geography</option>
-						<option value={23}>History</option>
-						<option value={24}>Politics</option>
-						<option value={25}>Art</option>
-						<option value={26}>Celebrities</option>
-						<option value={27}>Animals</option>
-						<option value={28}>Vehicles</option>
-						<option value={29}>Comics</option>
-						<option value={30}>Gadgets</option>
-						<option value={31}>Anime & Mangas</option>
-						<option value={32}>Cartoon & Animation</option>
-					</select>
-					<select
-						onChange={(e) => {
-							setDifficulty(e.target.value);
-						}}
-					>
-						<option value={''}>Pick your difficulty</option>
-						<option value={'easy'}>Easy</option>
-						<option value={'medium'}>Medium</option>
-						<option value={'hard'}>Hard</option>
-					</select>
-					<button className='submit'>Submit</button>
-				</form>
 			</>
 		);
 		//works

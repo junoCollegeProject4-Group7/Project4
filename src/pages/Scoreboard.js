@@ -19,11 +19,11 @@ const Scoreboard = ({ userName }) => {
 	}, []);
 	return (
 		<div>
-			<div className='result-section'>
-				<p>
+			<div className='resultSection'>
+				<p className='userResult'>
 					{userName} , You scored {results} out of 10
 				</p>
-				<img className='icon' src={avatar} alt='avatar image' />
+				<img className='userAvatar' src={avatar} alt='API Generated Avatar' />
 			</div>
 		</div>
 	);
