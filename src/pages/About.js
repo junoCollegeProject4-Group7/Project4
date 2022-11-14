@@ -9,9 +9,7 @@ const About = () => {
 					<img className="mascot" src={mascot} />
 				</div>
 				<div className='aboutDescription wrapper'>
-					<Link to="/">
-						<h1>Trivia Time</h1>
-					</Link>
+					<h1>Trivia Time</h1>
 					<h3>
 						Welcome to Trivia Time! Learn and Have fun, Create your Avatar, Decide your Topic and Difficulty then the brain teaser begins! Good Luck
 					</h3>

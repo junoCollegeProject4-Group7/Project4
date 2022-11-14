@@ -6,7 +6,9 @@ export const Header = () => {
         <nav className='NavBar'>
             <div className="logo">
             <img className="logoAvatar" src={mascot} alt="Trvia Time Avatar" />
+            <Link to='/' className="logoLink">
             <h3>trivia time</h3>
+            </Link>
             </div>
             <ul className="NavBar-list">
                 <li className="NavBar-item">

@@ -35,9 +35,9 @@ function App() {
                 <Route exact path="/" element={<About />} />
                 <Route exact path='/pages/Generator.js' element={<Generator />} />
                 {/* <Route path='./pages/Quiz.js' element={<QuizSelector />} /> */}
-                {/* <Route path='./pages/Scoreboard.js' element={<Scoreboard />} /> */}
-				<Route exact path='/pages/questioncard' element={<QuestionCard />} />
-				<Route exact path='/pages/error' element={<Error />} />
+                <Route exact path='/pages/Scoreboard.js' element={<Scoreboard />} />
+				<Route exact path='/pages/Questioncard' element={<QuestionCard />} />
+				<Route exact path='/pages/Error' element={<Error />} />
 			 </Routes>
 		</>
 	);

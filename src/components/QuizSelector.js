@@ -94,9 +94,9 @@ const QuizSelector = () => {
 		return (
 			<>
 				<div>
-					<p>This is your avatar</p>
-					<img className='icon' src={avatar} alt='icon'></img>
-					<h2>{userName}</h2>
+					{/* <p>This is your avatar</p> */}
+					<h2>Hello!, {userName}</h2>
+					<img className='userAvatar' src={avatar} alt='API Generated Avatar'></img>
 				</div>
 				<form onSubmit={(e) => handleSubmitQuestion(e)}>
 					<label htmlFor='quizCategory'></label>
