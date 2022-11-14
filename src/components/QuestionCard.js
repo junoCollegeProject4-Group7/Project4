@@ -94,7 +94,7 @@ const QuestionCard = ({ question, userName, resetTimer, stopTimer, count }) => {
             </div>
           </div>
           <Timer count={count} />
-        </div>
+          </div>
       ) : (
         <Scoreboard userName={userName} />
       )}

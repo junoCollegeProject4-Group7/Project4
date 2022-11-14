@@ -11,16 +11,21 @@ html {
 }
 
 h1 {
-    color: #ffffff;
-    text-transform: uppercase;
-    margin: 2em 0 0 0;
-    line-height: 1;
-    padding-bottom: 1vh;
+	color: #ffffff;
+	text-transform: uppercase;
+	margin: 2em 0 0 0;
+	line-height: 1;
+	padding-bottom: 1vh;
 }
 
 img {
 	max-width: 200px;
 	max-height: 200px;
+}
+
+form {
+	display: flex;
+	justify-content: center;
 }
 
 select,
@@ -37,17 +42,11 @@ button {
 	padding: 0.5em 1.5em;
 	box-shadow: 2px 5px #00000030;
 	margin-top: 2vh;
+
 	&:hover {
 		background-color: green;
 	}
 }
-
-// color: #ffffff;
-//     text-transform: uppercase;
-//     margin: 2em 0 0 0;
-//     line-height: 1;
-//     padding-bottom: 1vh;
-// }
 
 h3 {
 	font-family: Mikado, serif;
@@ -65,28 +64,28 @@ img {
 select,
 input,
 button {
-    background-color: #ff9000;
-    color: #fff;
-    text-shadow: 2px 2px 2px #00000020;
-    font-size: 1.4em;
-    font-family: Mikado, serif;
-    border: 3px solid #ffffff50;
-    text-transform: uppercase;
-    border-radius: 1em;
-    padding: 10px 15px;
-    box-shadow: 2px 5px #00000030;
-    margin-top: 2vh;
+	background-color: #ff9000;
+	color: #fff;
+	text-shadow: 2px 2px 2px #00000020;
+	font-size: 1.4em;
+	font-family: Mikado, serif;
+	border: 3px solid #ffffff50;
+	text-transform: uppercase;
+	border-radius: 1em;
+	padding: 10px 15px;
+	box-shadow: 2px 5px #00000030;
+	margin-top: 2vh;
 }
 
 a {
-    list-style: none;
-    text-decoration: none;
+	list-style: none;
+	text-decoration: none;
 
-    &:active {
-        color: red;
-    }
+	&:active {
+		color: red;
+	}
 
-    &:focus {
-        color: #F2F2F2;
-    }
+	&:focus {
+		color: #F2F2F2;
+	}
 }
