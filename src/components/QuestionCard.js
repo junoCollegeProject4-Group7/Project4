@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { getDatabase, ref, set, update } from 'firebase/database';
+import { useEffect } from 'react';
 import Timer from './Timer';
 import Scoreboard from '../pages/Scoreboard';
 
@@ -20,7 +21,6 @@ const QuestionCard = ({ question, userName, resetTimer }) => {
 
 	const answerBank = question.map(function (ans) {
 		const answer = ans.incorrect_answers + ',' + ans.correct_answer;
-
 		return answer.split(',');
 	});
 
