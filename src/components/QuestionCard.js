@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { getDatabase, ref, set, update } from 'firebase/database';
-import { useEffect } from 'react';
 import Timer from './Timer';
 import Scoreboard from '../pages/Scoreboard';
 
