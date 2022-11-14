@@ -1,11 +1,10 @@
-import React from 'react';
 import QuizSelector from '../components/QuizSelector';
 
 const Generator = () => {
 	return (
-		<>
+		<div className='generatorContainer wrapper'>
 			<QuizSelector />
-		</>
+		</div>
 	);
 };
 
