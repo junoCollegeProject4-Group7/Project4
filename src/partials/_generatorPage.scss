@@ -1,3 +1,5 @@
+/* ------------- ON BEGIN -> (WELCOME, USERINPUT, AND QUIZ SECTION) ------------- */
+
 .generatorContainer {
     background: conic-gradient(#FFDD33 0 7%, #FFA602 0 21%, #E21B3C 0 36%, #ed51aa 0 50%, #864CBF 0 64%, #0572B9 0 78%, #66BF39 0 93%, #FFDD33 0 100%);
     min-height: 200vh;
@@ -15,41 +17,45 @@
     text-align: center;
     font-size: 3rem;
 
-    .logoAvatar-Hello {
-        position: absolute;
-        top: 228px;
-        right: 231px;
+    .welcomeAvatar {
+
+        .logoAvatar-Hello {
+            position: absolute;
+            top: 228px;
+            right: 260px;
+        }
+
+        .speechBubble {
+            width: 40%;
+            color: #0572B9;
+            position: absolute;
+            background: #00aabb;
+            border-radius: 0.4em;
+            top: 247px;
+            left: 312px;
+            padding: 10px;
+            background: rgba(24, 23, 44, 0.1882352941);
+            animation: TopSlide 1s ease-in;
+            text-transform: uppercase;
+            z-index: 5;
+        }
+
+        .speechBubble:after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border: 37px solid transparent;
+            border-left-color: rgba(24, 23, 44, 0.1882352941);
+            border-right: 0;
+            border-bottom: 0;
+            margin-top: -18.5px;
+            margin-right: -37px;
+        }
     }
 
-    .speechBubble {
-        width: 43%;
-        color: #0572B9;
-        position: absolute;
-        background: #00aabb;
-        border-radius: 0.4em;
-        top: 252px;
-        left: 232px;
-        padding: 10px;
-        background: rgba(24, 23, 44, 0.1882352941);
-        animation: TopSlide 1s ease-in;
-        text-transform: uppercase;
-        z-index: 5;
-    }
-
-    .speechBubble:after {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: 50%;
-        width: 0;
-        height: 0;
-        border: 37px solid transparent;
-        border-left-color: rgba(24, 23, 44, 0.1882352941);
-        border-right: 0;
-        border-bottom: 0;
-        margin-top: -18.5px;
-        margin-right: -37px;
-    }
 }
 
 .userCreate {
@@ -76,7 +82,7 @@
             height: 200px;
             width: 200px;
             border-radius: 50%;
-            border: 1.8px solid black;
+            border: 2px solid black;
         }
     }
 }
@@ -115,13 +121,13 @@
     }
 }
 
+/* ----------------------------- SCOREBOARD PAGE ---------------------------- */
+
 .resultSection {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    // border: 10px solid red;
-    // background: #18172c30;
     background-color: #ff9000;
     color: #fff;
     text-shadow: 2px 2px 2px #00000020;

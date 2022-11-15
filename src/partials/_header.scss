@@ -1,4 +1,4 @@
-// <!-- NAVIGATION BAR -->
+/* --------------------------- KEYFRAME ANIMATION --------------------------- */
 
 @keyframes slide {
 
@@ -12,6 +12,9 @@
         opacity: 1;
     }
 }
+
+/* ----------------------- NAVIGATION BAR ----------------------- */
+
 
 .NavBar {
     position: absolute;
@@ -45,6 +48,8 @@
         }
 
     }
+
+    /* -------------------------- NAVIGATION BAR LINKS -------------------------- */
 
     ul {
         float: right;

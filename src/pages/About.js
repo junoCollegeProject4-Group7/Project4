@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import mascot from '../assests/meeseeks-removebg-preview.png';
+
 const About = () => {
 	return (
 		<div className='aboutHome wrapper'>

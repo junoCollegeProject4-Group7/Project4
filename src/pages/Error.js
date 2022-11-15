@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Error = () => {
 	return <div>Sorry This page doesn't exist</div>;
 };

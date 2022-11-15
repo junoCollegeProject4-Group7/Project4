@@ -1,4 +1,3 @@
-import React from 'react';
 import { getDatabase, ref, onValue } from 'firebase/database';
 import { useState, useEffect } from 'react';
 import firebaseConfig from '../firebase';
@@ -38,7 +37,7 @@ const Scoreboard = ({ userName }) => {
 				</p>
 				<img className='userAvatar' src={avatar} alt='API Generated Avatar' />
 				<button>
-				<Link exact to='/'>Play Again!</Link>
+					<Link exact to='/'>Play Again!</Link>
 				</button>
 			</div>
 		</div>

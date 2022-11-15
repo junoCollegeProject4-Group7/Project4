@@ -1,10 +1,12 @@
 @use "./partials/setup";
 @use "./partials/general";
 @use "./partials/header";
+@use "./partials/footer";
 @use "./partials/aboutPage";
 @use "./partials/generatorPage";
 @use "./partials/scoreboardPage";
-@use "./partials/footer";
+@use "./partials/contactPage";
+@use "./partials/mediaQueries";
 // @use "./partials/loadingAnimation";
 
 @font-face {

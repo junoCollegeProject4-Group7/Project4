@@ -1,8 +1,6 @@
-import React from 'react';
 import QuizSelector from '../components/quizSelector';
 
 const Quiz = () => {
-	//asdasdasd
 	return (
 		<>
 			<QuizSelector />
@@ -11,5 +9,3 @@ const Quiz = () => {
 };
 
 export default Quiz;
-
-// changed name

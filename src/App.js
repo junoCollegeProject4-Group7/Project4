@@ -12,35 +12,21 @@ import firebaseConfig from './firebase';
 import Generator from './pages/Generator';
 import FireData from './components/FireData';
 import QuestionCard from './components/QuestionCard';
-import Error from './pages/Error';import 
-{ Header } from './components/Header';
+import Error from './pages/Error'; import { Header } from './components/Header';
 import Footer from './components/Footer';
 
-
 function App() {
-	// const [players, setplayers] = useState([]);
-	// useEffect(() => {
-	// 	//     // variable that holds data details
-	// 	const database = getDatabase(firebaseConfig);
-	// 	//     // references the database
-	// 	const databaseref = ref(database);
-	// 	//     // adding event listener to the variable from firebase
-	// 	onValue(databaseref, (response) => {
-	// 		console.log(response.val());
-	// 	});
-	// }, []);
 	return (
 		<>
 			<Header />
-            <Routes>
-                <Route exact path="/" element={<About />} />
-                <Route exact path='/pages/Generator.js' element={<Generator />} />
-                {/* <Route path='./pages/Quiz.js' element={<QuizSelector />} /> */}
-                <Route exact path='/pages/Scoreboard.js' element={<Scoreboard />} />
+			<Routes>
+				<Route exact path="/" element={<About />} />
+				<Route exact path='/pages/Generator.js' element={<Generator />} />
+				<Route exact path='/pages/Scoreboard.js' element={<Scoreboard />} />
 				<Route exact path='/pages/Questioncard' element={<QuestionCard />} />
 				<Route exact path='/pages/Error' element={<Error />} />
-			 </Routes>
-			 <Footer />
+			</Routes>
+			<Footer />
 		</>
 	);
 }

@@ -5,7 +5,6 @@ import QuestionCard from './QuestionCard';
 import { v4 } from 'uuid';
 import mascot from '../assests/meeseeks-removebg-preview.png';
 
-// changed name
 //api is https://opentdb.com/api_config.php
 
 //example api https://opentdb.com/api.php?amount=10&category=25&difficulty=medium&type=multiple
@@ -26,26 +25,26 @@ const QuizSelector = () => {
 
 	useEffect(() => {
 		if (count === 0) stopTimer();
-	  }, [count]);
+	}, [count]);
 
-	  const startTimer = () => {
+	const startTimer = () => {
 		setTimer(
-		  setInterval(() => {
-			setCount((prevCount) => prevCount - 1);
-		  }, 1000)
+			setInterval(() => {
+				setCount((prevCount) => prevCount - 1);
+			}, 1000)
 		);
-	  };
+	};
 
 
-	  const resetTimer = () => {
+	const resetTimer = () => {
 		clearInterval(timer);
 		setCount(answerTime);
 		startTimer();
-	  };
-	
-	  const stopTimer = () => {
+	};
+
+	const stopTimer = () => {
 		clearInterval(timer);
-	  };
+	};
 
 	const handleSearchAvatar = (e) => {
 		e.preventDefault();
@@ -108,10 +107,12 @@ const QuizSelector = () => {
 	if (avatarLoading && loading) {
 		return (
 			<form onSubmit={(e) => handleSearchAvatar(e)} className='charGen'>
-				<img className="logoAvatar-Hello" src={mascot} alt="Trvia Time Avatar" />
-				<h2 className='speechBubble'>
-					Nice to meet you! What's your name?
-				</h2>
+				<div className='welcomeAvatar'>
+					<img className="logoAvatar-Hello" src={mascot} alt="Trvia Time Avatar" />
+					<h2 className='speechBubble'>
+						Nice to meet you! What's your name?
+					</h2>
+				</div>
 				<label htmlFor='Character Icon Generator'></label>
 				<input
 					type='text'

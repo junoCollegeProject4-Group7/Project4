@@ -1,3 +1,5 @@
+/* ------------------------ GENERAL SEMANTIC STYLING ------------------------ */
+
 @use './setup';
 
 .wrapper {
@@ -60,8 +62,9 @@ button {
 	padding: 10px 15px;
 	box-shadow: 2px 5px #00000030;
 	margin-top: 2vh;
+
 	&:hover {
-		background-color: green;
+		background-color: #0542B9;
 	}
 }
 
@@ -69,12 +72,4 @@ a {
 	list-style: none;
 	text-decoration: none;
 	color: #F2F2F2;
-
-	// &:active {
-	// 	color: red;
-	// }
-
-	// &:focus {
-	// 	color: #F2F2F2;
-	// }
 }

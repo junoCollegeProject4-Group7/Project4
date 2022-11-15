@@ -18,28 +18,28 @@ function FireData() {
 		});
 	}, []);
 
-	const [userInput, setUserInput] = useState('');
+	// const [userInput, setUserInput] = useState('');
 
-	const newState = [];
-	for (let key in setPlayers) {
-		newState.push({ key: key, name: setPlayers[key] });
-	}
+	// const newState = [];
+	// for (let key in setPlayers) {
+	// 	newState.push({ key: key, name: setPlayers[key] });
+	// }
 
-	const handleInputChange = (event) => {
-		setUserInput(event.target.value);
-	};
+	// const handleInputChange = (event) => {
+	// 	setUserInput(event.target.value);
+	// };
 
-	const handleFormSubmit = (event) => {
-		// preventing the default action of the form refresh on submit/button
-		event.preventDefault();
-		// console.log(userInput);
+	// const handleFormSubmit = (event) => {
+	// 	// preventing the default action of the form refresh on submit/button
+	// 	event.preventDefault();
+	// 	// console.log(userInput);
 
-		// now to push the information to firebase!
-		const database = getDatabase(firebaseConfig);
-		const databaseRef = ref(database);
-		push(databaseRef, userInput);
-		setUserInput('');
-	};
+	// 	// now to push the information to firebase!
+	// 	const database = getDatabase(firebaseConfig);
+	// 	const databaseRef = ref(database);
+	// 	push(databaseRef, userInput);
+	// 	setUserInput('');
+	// };
 
 	return (
 		<ul>
