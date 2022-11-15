@@ -1,8 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { getDatabase, ref, set, update } from 'firebase/database';
+// group components/imports
 import Timer from './Timer';
 import Scoreboard from '../pages/Scoreboard';
+import { v4 } from 'uuid';
 
 //api is https://opentdb.com/api_config.php
 
@@ -12,15 +14,52 @@ const QuestionCard = ({ question, userName, resetTimer, stopTimer, count }) => {
   const [score, setScore] = useState(0);
   const [timerReset, setTimerReset] = useState(false);
   const [showScore, setShowScore] = useState(true);
+  const [answerBank, setAnswerBank] = useState([]);
 
   const questions = question.map(function (q) {
     return q.question;
   });
 
-  const answerBank = question.map(function (ans) {
-    const answer = ans.incorrect_answers + ',' + ans.correct_answer;
-    return answer.split(',');
-  });
+  // shuffling the answers method https://bost.ocks.org/mike/shuffle/ curtesy of Paco
+  // create folder
+  function shuffle(ans) {
+    let m = ans.length,
+    t,
+    i;
+    // While there remain elements to shuffle…
+    if(m) {
+      // Pick a remaining element…
+      i = Math.floor(Math.random() * m--);
+      // And swap it with the current element.
+      t = ans[m];
+      ans[m] = ans[i];
+      ans[i] = t;
+    }
+    return ans;
+  }
+  useEffect(()=>{
+    const ansArray = [];
+    question.forEach(element => {
+      const answer =`${element.incorrect_answers.toString()},${element.correct_answer}`.split(',')
+      ansArray.push(shuffle(answer))
+    });
+    setAnswerBank(ansArray)
+  }, [question])
+
+  
+  // }); //Shuffle array method
+  
+  // const allAsnwers = [...ans.incorrect_answers, ans.correct_answer];
+  // const shuffledAns = shuffle(allAsnwers);
+  // console.log(shuffledAns, "these are all the shuffled Ans")
+  // console.log(currentQuestion, "this is answer.correct_answer")
+
+  // shuffle date b/f rendering 
+  
+  // extra code ends here 
+  
+  
+
 
   const correctAns = question.map(function (answer) {
     return answer.correct_answer;
@@ -54,7 +93,7 @@ const QuestionCard = ({ question, userName, resetTimer, stopTimer, count }) => {
       stopTimer();
     }
   };
-
+  console.log(answerBank)
   return (
     <>
       {showScore ? (
@@ -74,11 +113,11 @@ const QuestionCard = ({ question, userName, resetTimer, stopTimer, count }) => {
           <div className="answers">
             <div>
               {/* splits answer array by delimiter and maps the array adding a button to handle  */}
-              {/* answerBank[currentQuestion] && */}
               {answerBank[currentQuestion] &&
-                answerBank[currentQuestion].map((ans) => {
+               answerBank[currentQuestion].map((ans) => {
                   return (
                     <button
+                      key={v4()}
                       onClick={(e) => {
                         handleSubmit(e);
                       }}
@@ -94,7 +133,8 @@ const QuestionCard = ({ question, userName, resetTimer, stopTimer, count }) => {
                 })}
             </div>
           </div>
-          </div>
+          <Timer count={count} />
+        </div>
       ) : (
         <Scoreboard userName={userName} />
       )}

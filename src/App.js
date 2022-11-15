@@ -19,10 +19,11 @@ function App() {
 	return (
 		<>
 			<Header />
-			<Routes>
-				<Route exact path="/" element={<About />} />
-				<Route exact path='/pages/Generator.js' element={<Generator />} />
-				<Route exact path='/pages/Scoreboard.js' element={<Scoreboard />} />
+            <Routes>
+                <Route exact path="/" element={<About />} />
+                <Route exact path='/pages/Generator' element={<Generator />} />
+                {/* <Route path='./pages/Quiz.js' element={<QuizSelector />} /> */}
+                <Route exact path='/pages/Scoreboard' element={<Scoreboard />} />
 				<Route exact path='/pages/Questioncard' element={<QuestionCard />} />
 				<Route exact path='/pages/Error' element={<Error />} />
 			</Routes>

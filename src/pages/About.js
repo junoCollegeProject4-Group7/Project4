@@ -15,7 +15,7 @@ const About = () => {
 						Welcome to Trivia Time! Learn and Have fun, Create your Avatar, Decide your Topic, and Difficulty and then... the brain-teaser begins! Good Luck!
 					</h3>
 					<div className='begin'>
-						<Link to='../pages/Generator.js'>Click here to begin</Link>
+						<Link to='/pages/Generator'>Click here to begin</Link>
 					</div>
 				</div>
 			</div>
