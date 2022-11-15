@@ -10,6 +10,11 @@ html {
 	font-size: 62.5%;
 }
 
+body {
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
 h1 {
 	color: #ffffff;
 	text-transform: uppercase;
@@ -26,26 +31,6 @@ img {
 form {
 	display: flex;
 	justify-content: center;
-}
-
-select,
-input,
-button {
-	background-color: #ff9000;
-	color: #fff;
-	text-shadow: 2px 2px 2px #00000020;
-	font-size: 1.4em;
-	font-family: Mikado, serif;
-	border: 3px solid #ffffff50;
-	text-transform: uppercase;
-	border-radius: 1em;
-	padding: 0.5em 1.5em;
-	box-shadow: 2px 5px #00000030;
-	margin-top: 2vh;
-
-	&:hover {
-		background-color: green;
-	}
 }
 
 h3 {
@@ -75,17 +60,21 @@ button {
 	padding: 10px 15px;
 	box-shadow: 2px 5px #00000030;
 	margin-top: 2vh;
+	&:hover {
+		background-color: green;
+	}
 }
 
 a {
 	list-style: none;
 	text-decoration: none;
+	color: #F2F2F2;
 
-	&:active {
-		color: red;
-	}
+	// &:active {
+	// 	color: red;
+	// }
 
-	&:focus {
-		color: #F2F2F2;
-	}
+	// &:focus {
+	// 	color: #F2F2F2;
+	// }
 }

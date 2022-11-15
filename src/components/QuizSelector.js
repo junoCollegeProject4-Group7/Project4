@@ -2,8 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { getDatabase, ref, set } from 'firebase/database';
 import QuestionCard from './QuestionCard';
-import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
+import mascot from '../assests/meeseeks-removebg-preview.png';
 
 // changed name
 //api is https://opentdb.com/api_config.php
@@ -72,7 +72,7 @@ const QuizSelector = () => {
 		try {
 			const response = await axios
 				.get(
-					`https://avatars.dicebear.com/api/adventurer-neutral/${id}.svg?scale=75`
+					`https://avatars.dicebear.com/api/adventurer-neutral/${id}.svg?scale=25`
 				)
 				.then((res) => {
 					setAvatar(res.config.url);
@@ -108,6 +108,10 @@ const QuizSelector = () => {
 	if (avatarLoading && loading) {
 		return (
 			<form onSubmit={(e) => handleSearchAvatar(e)} className='charGen'>
+				<img className="logoAvatar-Hello" src={mascot} alt="Trvia Time Avatar" />
+				<h2 className='speechBubble'>
+					Nice to meet you! What's your name?
+				</h2>
 				<label htmlFor='Character Icon Generator'></label>
 				<input
 					type='text'
@@ -122,8 +126,7 @@ const QuizSelector = () => {
 		return (
 			<>
 				<div className='userCreate'>
-					{/* <p>This is your avatar</p> */}
-					<h2>Hello, {userName}!</h2>
+					<h2 className='userName'>Hello, {userName}!</h2>
 					<img className='userAvatar' src={avatar} alt='API Generated Avatar'></img>
 					<form onSubmit={(e) => handleSubmitQuestion(e)}>
 						<label htmlFor='quizCategory'></label>

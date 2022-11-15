@@ -14,6 +14,7 @@ import FireData from './components/FireData';
 import QuestionCard from './components/QuestionCard';
 import Error from './pages/Error';import 
 { Header } from './components/Header';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
 				<Route exact path='/pages/Questioncard' element={<QuestionCard />} />
 				<Route exact path='/pages/Error' element={<Error />} />
 			 </Routes>
+			 <Footer />
 		</>
 	);
 }
