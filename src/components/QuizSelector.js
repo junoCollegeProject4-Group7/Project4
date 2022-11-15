@@ -36,6 +36,7 @@ const QuizSelector = () => {
 		);
 	  };
 
+    // ternary logic for answer feedback 
 
 	  const resetTimer = () => {
 		clearInterval(timer);
@@ -131,18 +132,16 @@ const QuizSelector = () => {
 							onChange={(e) => {
 								setCategory(e.target.value);
 							}}
-						>
-							<option value={9}>General knowledge</option>
+						> 
+							<option value={8}>Pick Your Category</option> 
+							<option value={9}>General knowledge</option> 
 							<option value={10}>Books</option>
 							<option value={11}>Film</option>
-							<option value={12}> Music</option>
-							<option value={13}>Musicals & Theatre</option>
-							<option value={14}>Television</option>
-							<option value={15}>Video Games</option>
+							<option value={12}>Music</option>
+							<option value={14}>Television</option> 
 							<option value={16}>Board Games</option>
 							<option value={17}>Science & Nature</option>
-							<option value={18}>Computers</option>
-							<option value={19}>Math</option>
+							<option value={18}>Computers</option>    {/* is not working */}
 							<option value={20}>Mythology</option>
 							<option value={21}>Sports</option>
 							<option value={22}>Geography</option>
@@ -192,39 +191,7 @@ const QuizSelector = () => {
 			</>
 		);
 	}
-	// } else if (!quizLoad) {
-	// 	return (
-	// 		<>
-	// 			<div>hello</div>
-	// 			{/*
-	// 			<QuestionCard
-	// 				question={questionBank}
-	// 				userName={userName}
-	// 				avatar={avatar}
-	// 			></QuestionCard> */}
-	// 		</>
-	// 	);
-	// }
-	//why does this work but not with the api
-	// } else if (!avatarLoading && !loading) {
-	// 	return (
-	// 		<>
-	// 			<div>Spinner</div>
-	// 		</>
-	// 	);
-
-	// } else if (questionBank) {
-	// 	return (
-	// 		<>
-	// 			<QuestionCard
-	// 				question={questionBank}
-	// 				userName={userName}
-	// 				avatar={avatar}
-	// 			></QuestionCard>
-	// 		</>
-	// 	);
-	// }
-	//false and false
+	
 };
 
 export default QuizSelector;
