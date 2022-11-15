@@ -24,10 +24,10 @@ const QuestionCard = ({ question, userName, resetTimer, stopTimer, count }) => {
   // create folder
   function shuffle(ans) {
     let m = ans.length,
-    t,
-    i;
+      t,
+      i;
     // While there remain elements to shuffle…
-    if(m) {
+    if (m) {
       // Pick a remaining element…
       i = Math.floor(Math.random() * m--);
       // And swap it with the current element.
@@ -37,28 +37,28 @@ const QuestionCard = ({ question, userName, resetTimer, stopTimer, count }) => {
     }
     return ans;
   }
-  useEffect(()=>{
+  useEffect(() => {
     const ansArray = [];
     question.forEach(element => {
-      const answer =`${element.incorrect_answers.toString()},${element.correct_answer}`.split(',')
+      const answer = `${element.incorrect_answers.toString()},${element.correct_answer}`.split(',')
       ansArray.push(shuffle(answer))
     });
     setAnswerBank(ansArray)
   }, [question])
 
-  
+
   // }); //Shuffle array method
-  
+
   // const allAsnwers = [...ans.incorrect_answers, ans.correct_answer];
   // const shuffledAns = shuffle(allAsnwers);
   // console.log(shuffledAns, "these are all the shuffled Ans")
   // console.log(currentQuestion, "this is answer.correct_answer")
 
   // shuffle date b/f rendering 
-  
+
   // extra code ends here 
-  
-  
+
+
 
 
   const correctAns = question.map(function (answer) {
@@ -98,6 +98,7 @@ const QuestionCard = ({ question, userName, resetTimer, stopTimer, count }) => {
     <>
       {showScore ? (
         <div className="card">
+          <Timer count={count} />
           <Timer currentQuestion={currentQuestion} />
           <div className="question">
             {/* questions.length > 0 && */}
@@ -113,7 +114,7 @@ const QuestionCard = ({ question, userName, resetTimer, stopTimer, count }) => {
             <div>
               {/* splits answer array by delimiter and maps the array adding a button to handle  */}
               {answerBank[currentQuestion] &&
-               answerBank[currentQuestion].map((ans) => {
+                answerBank[currentQuestion].map((ans) => {
                   return (
                     <button
                       key={v4()}
@@ -132,7 +133,6 @@ const QuestionCard = ({ question, userName, resetTimer, stopTimer, count }) => {
                 })}
             </div>
           </div>
-          <Timer count={count} />
         </div>
       ) : (
         <Scoreboard userName={userName} />

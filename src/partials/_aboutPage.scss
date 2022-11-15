@@ -1,3 +1,5 @@
+/* -------------------------- ANIMATION DECLARATION ------------------------- */
+
 @keyframes spin {
     0% {
         transform: rotate(0);
@@ -20,6 +22,8 @@
         opacity: 1;
     }
 }
+
+/* -------------------------------- MAIN PAGE ------------------------------- */
 
 .aboutHome {
     position: relative;
@@ -44,7 +48,6 @@
     align-items: center;
     animation: spin 3s;
 
-
     .mascot {
         display: flex;
         justify-content: center;
@@ -60,36 +63,34 @@
     }
 
     h3 {
+        font-size: 2rem;
         animation: slide 2.7s;
     }
 
     .begin {
+        margin-top: 30px;
         animation: slide 2.5s;
-    }
-}
 
-.begin {
-    margin-top: 30px;
+        a {
+            width: fit-content;
+            text-decoration: none;
+            background-color: #ff9000;
+            color: #fff;
+            text-shadow: 2px 2px 2px #00000020;
+            font-size: 1.4rem;
+            font-family: Mikado, serif;
+            border: 3px solid #ffffff50;
+            text-transform: uppercase;
+            border-radius: 1em;
+            padding: 10px 15px;
+            box-shadow: 2px 5px #00000030;
+            margin-top: 2vh;
 
-    a {
-        width: fit-content;
-        text-decoration: none;
-        background-color: #ff9000;
-        color: #fff;
-        text-shadow: 2px 2px 2px #00000020;
-        font-size: 1.4rem;
-        font-family: Mikado, serif;
-        border: 3px solid #ffffff50;
-        text-transform: uppercase;
-        border-radius: 1em;
-        padding: 10px 15px;
-        box-shadow: 2px 5px #00000030;
-        margin-top: 2vh;
-
-        &:hover {
-            transition: 0.5s;
-            background: #ff9000;
-            box-shadow: 0 0 5px #ff9000, 0 0 25px #ff9000, 0 0 50px #ff9000, 0 0 200px #ff9000;
+            &:hover {
+                transition: 0.5s;
+                background: #ff9000;
+                box-shadow: 0 0 5px #ff9000, 0 0 25px #ff9000, 0 0 50px #ff9000, 0 0 200px #ff9000;
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import mascot from '../assests/meeseeks-removebg-preview.png';
+
 const About = () => {
 	return (
 		<div className='aboutHome wrapper'>
@@ -11,7 +12,7 @@ const About = () => {
 				<div className='aboutDescription wrapper'>
 					<h1>Trivia Time</h1>
 					<h3>
-						Welcome to Trivia Time! Learn and Have fun, Create your Avatar, Decide your Topic and Difficulty then... the brain teaser begins! Good Luck
+						Welcome to Trivia Time! Learn and Have fun, Create your Avatar, Decide your Topic, and Difficulty and then... the brain-teaser begins! Good Luck!
 					</h3>
 					<div className='begin'>
 						<Link to='/pages/Generator'>Click here to begin</Link>
