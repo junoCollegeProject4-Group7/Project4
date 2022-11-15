@@ -16,7 +16,7 @@ export const Header = () => {
                 </Link>
                 </li>
                 <li className="NavBar-item">
-                <Link to='../pages/Scoreboard.js'>High Scores
+                <Link to='/pages/Scoreboard'>High Scores
                 </Link>
                 </li>
             </ul>
