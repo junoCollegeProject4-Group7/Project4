@@ -67,7 +67,7 @@
 
     input {
         position: relative;
-        top: 25vh
+        top: 23vh
     }
 
     .aboutDescription {
@@ -106,8 +106,14 @@
         }
     }
 
-    .resultSection img {
-        max-width: 200px;
+    .resultSection {
+
+        .img1,
+        .img2,
+        .img3 {
+            max-width: 50px;
+            display: none;
+        }
     }
 
 }
@@ -173,4 +179,23 @@
             flex-direction: column;
         }
     }
+}
+
+@media (max-width: 375px) {
+
+    /* all of our styles for MOBILE devices will go within this breakpoint */
+    .aboutDescription h3 {
+        display: none;
+    }
+
+    img.logoAvatar-Hello {
+        width: 190px
+    }
+
+    input {
+        text-align: center;
+        top: 30vh;
+        font-size: 2rem;
+    }
+
 }
