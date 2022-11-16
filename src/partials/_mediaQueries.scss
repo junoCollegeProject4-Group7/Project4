@@ -121,6 +121,9 @@ screen and (max-height: 700px) {
 
 @media screen and (max-width: 570px),
 screen and (max-height: 700px) {
+    .aboutDescription h3 {
+        display: none;
+    }
 
     /* all of our styles for MOBILE devices will go within this breakpoint */
     .NavBar {
