@@ -7,8 +7,8 @@
         background: conic-gradient(#FFDD33 0 7%, #FFA602 0 21%, #E21B3C 0 36%, #ed51aa 0 50%, #864CBF 0 64%, #0572B9 0 78%, #66BF39 0 93%, #FFDD33 0 100%);
         min-height: 200vh;
         position: absolute;
-        height: 294vh;
-        width: 271vw;
+        height: 270vh;
+        width: 270vw;
         top: -105%;
         left: -85%;
         z-index: -1;
@@ -18,17 +18,14 @@
         animation: spin 3s;
     }
 
-    input {
-        margin-top: 25vh;
-    }
+
 
     .aboutDescription {
-        transition: 2s ease-in;
+        // transition: 2s ease-in;
         position: absolute;
         left: 0;
         right: 0;
-        margin: auto;
-        bottom: 100px;
+        top: 25vh;
         text-align: center;
 
         .begin {
@@ -68,6 +65,19 @@
 @media (max-width: 820px) {
     /* all of our styles for TABLET devices will go within this breakpoint */
 
+    input {
+        position: relative;
+        top: 25vh
+    }
+
+    .aboutDescription {
+        margin-bottom: 150px;
+
+        h1 {
+            font-size: 8.5rem;
+        }
+    }
+
     .charGen .welcomeAvatar .speechBubble {
         width: 40%;
         color: #0572B9;
@@ -95,10 +105,29 @@
             flex-direction: column;
         }
     }
+
+    .resultSection img {
+        max-width: 200px;
+    }
+
 }
 
 @media (max-width: 570px) {
+
     /* all of our styles for MOBILE devices will go within this breakpoint */
+    .NavBar {
+        .logo {
+            text-align: center;
+        }
+
+        li {
+            display: none;
+        }
+    }
+
+    .aboutDescription {
+        bottom: 20px;
+    }
 
     select {
         font-size: 2.5rem;

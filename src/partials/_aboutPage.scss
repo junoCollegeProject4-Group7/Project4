@@ -23,6 +23,18 @@
     }
 }
 
+
+
+@keyframes pulse {
+    50% {
+        box-shadow: 0 0 0 0.7rem rgba(255, 255, 255, 0.75);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0.7rem rgba(255, 255, 255, 0);
+    }
+}
+
 /* -------------------------------- MAIN PAGE ------------------------------- */
 
 .aboutHome {
@@ -85,6 +97,8 @@
             padding: 10px 15px;
             box-shadow: 2px 5px #00000030;
             margin-top: 2vh;
+            animation: pulse 1.5s ease-out infinite;
+            animation-delay: 2.5s;
 
             &:hover {
                 transition: 0.5s;
