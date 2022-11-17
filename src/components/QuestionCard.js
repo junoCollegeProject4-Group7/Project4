@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
 import { getDatabase, ref, set, update } from 'firebase/database';
 // group components/imports
@@ -46,7 +45,6 @@ const QuestionCard = ({ question, userName, resetTimer, stopTimer, count }) => {
     setAnswerBank(ansArray)
   }, [question])
 
-
   // }); //Shuffle array method
 
   // const allAsnwers = [...ans.incorrect_answers, ans.correct_answer];
@@ -57,9 +55,6 @@ const QuestionCard = ({ question, userName, resetTimer, stopTimer, count }) => {
   // shuffle date b/f rendering 
 
   // extra code ends here 
-
-
-
 
   const correctAns = question.map(function (answer) {
     return answer.correct_answer;
@@ -140,4 +135,5 @@ const QuestionCard = ({ question, userName, resetTimer, stopTimer, count }) => {
     </>
   );
 };
+
 export default QuestionCard;

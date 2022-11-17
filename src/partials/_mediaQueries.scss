@@ -18,8 +18,6 @@
         animation: spin 3s;
     }
 
-
-
     .aboutDescription {
         transition: 2s ease-in;
         position: absolute;
@@ -71,14 +69,6 @@ screen and (max-height: 750px) {
         top: 23vh
     }
 
-    .aboutDescription {
-        margin-bottom: 150px;
-
-        h1 {
-            font-size: 8.5rem;
-        }
-    }
-
     .charGen .welcomeAvatar .speechBubble {
         width: 40%;
         color: #0572B9;
@@ -107,22 +97,36 @@ screen and (max-height: 750px) {
         }
     }
 
-    .resultSection {
+    .resultSection .img1 {
+        max-width: 150px;
+    }
 
-        .img1,
-        .img2,
-        .img3 {
-            max-width: 50px;
-            display: none;
-        }
+    .img2 {
+        max-width: 150px;
+    }
+
+    .img3 {
+        max-width: 150px;
     }
 
 }
 
 @media screen and (max-width: 570px),
-screen and (max-height: 750px) {
-
+screen and (max-height: 850px) {
     /* all of our styles for MOBILE devices will go within this breakpoint */
+
+    .aboutDescription {
+        h1 {
+            font-size: 1.7;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+
+        }
+
+    }
+
     .NavBar {
         .logo {
             text-align: center;
@@ -131,10 +135,6 @@ screen and (max-height: 750px) {
         li {
             display: none;
         }
-    }
-
-    .aboutDescription {
-        display: none;
     }
 
     select {
@@ -148,7 +148,6 @@ screen and (max-height: 750px) {
         background: #00aabb;
         border-radius: 0.4em;
         top: 159px;
-
         right: 0;
         left: 0;
         margin: auto;
@@ -168,7 +167,7 @@ screen and (max-height: 750px) {
 
         .welcomeAvatar .logoAvatar-Hello {
             position: absolute;
-            top: 270px;
+            top: 240px;
             right: 0;
             left: 0;
             margin: auto;
@@ -183,12 +182,18 @@ screen and (max-height: 750px) {
     }
 }
 
-@media screen and (max-width: 375px),
-screen and (max-height: 750px) {
-
+@media screen and (max-width: 400px),
+screen and (max-height: 580px) {
     /* all of our styles for MOBILE devices will go within this breakpoint */
-    .aboutDescription h3 {
-        display: none;
+
+    .aboutDescription {
+        h1 {
+            font-size: 6rem;
+        }
+
+        h3 {
+            display: none;
+        }
     }
 
     img.logoAvatar-Hello {
@@ -200,5 +205,4 @@ screen and (max-height: 750px) {
         top: 30vh;
         font-size: 2rem;
     }
-
 }

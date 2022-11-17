@@ -10,7 +10,7 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 import firebaseConfig from './firebase';
 // import Quiz from './components/QuizSelector';
 import Generator from './pages/Generator';
-import FireData from './components/FireData';
+// import FireData from './components/FireData';
 import QuestionCard from './components/QuestionCard';
 import Error from './pages/Error'; import { Header } from './components/Header';
 import Footer from './components/Footer';

@@ -23,12 +23,9 @@
         flex-direction: row-reverse;
         justify-content: center;
         align-items: center;
-        // flex-direction: column;
 
         .logoAvatar-Hello {
             position: relative;
-            // top: 228px;
-            // right: 260px;
         }
 
         .speechBubble {
@@ -37,8 +34,6 @@
             position: relative;
             background: #00aabb;
             border-radius: 0.4em;
-            // top: 247px;
-            // left: 312px;
             padding: 10px;
             background: rgba(24, 23, 44, 0.1882352941);
             animation: TopSlide 1s ease-in;

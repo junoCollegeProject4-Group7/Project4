@@ -35,7 +35,7 @@ const QuizSelector = () => {
 		);
 	};
 
-    // ternary logic for answer feedback 
+	// ternary logic for answer feedback 
 
 	const resetTimer = () => {
 		clearInterval(timer);
@@ -136,13 +136,13 @@ const QuizSelector = () => {
 							onChange={(e) => {
 								setCategory(e.target.value);
 							}}
-						> 
-							<option value={8}>Pick Your Category</option> 
-							<option value={9}>General knowledge</option> 
+						>
+							<option value={8}>Pick Your Category</option>
+							<option value={9}>General knowledge</option>
 							<option value={10}>Books</option>
 							<option value={11}>Film</option>
 							<option value={12}>Music</option>
-							<option value={14}>Television</option> 
+							<option value={14}>Television</option>
 							<option value={16}>Board Games</option>
 							<option value={17}>Science & Nature</option>
 							<option value={18}>Computers</option>    {/* is not working */}
@@ -175,12 +175,6 @@ const QuizSelector = () => {
 				</div>
 			</>
 		);
-		//works
-		// } else if (!avatarLoading && !loading) {
-		// 	return <div>hello</div>;
-		// }
-
-		//links to a white page, doesnt work
 	} else if (!avatarLoading && !loading) {
 		return (
 			<>
@@ -195,7 +189,6 @@ const QuizSelector = () => {
 			</>
 		);
 	}
-	
 };
 
 export default QuizSelector;
