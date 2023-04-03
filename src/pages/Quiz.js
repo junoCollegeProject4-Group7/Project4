@@ -1,4 +1,4 @@
-import QuizSelector from '../components/quizSelector';
+import QuizSelector from '../components/QuizSelector';
 
 const Quiz = () => {
 	return (
